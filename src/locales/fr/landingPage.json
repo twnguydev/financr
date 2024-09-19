@@ -1,0 +1,45 @@
+{
+  "hero_title": "Naviguer dans le paysage financier pour réussir",
+  "hero_subtitle": "Notre plateforme de gestion d'investissements aide les entreprises à croître et à réussir grâce à une gamme de services incluant le suivi de portefeuille, l'analyse des risques et l'optimisation de la performance.",
+  "hero_cta": "Réservez une consultation",
+  "services_title": "Services",
+  "services_subtitle": "Notre plateforme d'investissement offre une gamme de services pour aider les entreprises à croître et à réussir financièrement. Ces services incluent :",
+  "services": [
+    {
+      "title": "Suivi de Portefeuille",
+      "description": "Surveillance en temps réel de vos investissements à travers plusieurs classes d'actifs."
+    },
+    {
+      "title": "Analyse des Risques",
+      "description": "Algorithmes avancés pour évaluer et atténuer les risques d'investissement potentiels."
+    },
+    {
+      "title": "Optimisation de la Performance",
+      "description": "Suggestions basées sur l'IA pour optimiser la performance de votre portefeuille d'investissement."
+    },
+    {
+      "title": "Aperçus du Marché",
+      "description": "Nouvelles financières et analyses sélectionnées pour informer vos décisions d'investissement."
+    }
+  ],
+  "services_cta": "En savoir plus",
+  "contactus_title": "Rendons les choses possibles",
+  "contactus_subtitle": "Contactez-nous aujourd'hui pour en savoir plus sur la façon dont nos services de gestion d'investissements peuvent aider votre entreprise à croître et à réussir financièrement.",
+  "contactus_cta": "Obtenez votre proposition gratuite",
+  "casestudy_title": "Étude de cas",
+  "casestudies": [
+    {
+      "title": "Pour un fonds spéculatif",
+      "description": "Nous avons mis en œuvre une stratégie d'analyse des risques qui a entraîné une réduction de 30 % de la volatilité du portefeuille et une augmentation de 15 % des rendements annuels."
+    },
+    {
+      "title": "Pour un investisseur individuel",
+      "description": "Notre outil d'optimisation de portefeuille a contribué à une augmentation de 25 % de la performance globale du portefeuille dans la première année d'utilisation."
+    },
+    {
+      "title": "Pour un fonds de pension",
+      "description": "Nos aperçus du marché et le suivi de la performance ont conduit à un portefeuille plus diversifié, résultant en une croissance stable de 8 % par an."
+    }
+  ],
+  "casestudy_cta": "En savoir plus"
+}
