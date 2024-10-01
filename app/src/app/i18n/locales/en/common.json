@@ -1,0 +1,21 @@
+{
+  "navbar": {
+    "logo": "Financr",
+    "about": "About Us",
+    "services": "Services",
+    "uses-cases": "Use Cases",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "request-quote": "Request a quote"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "about": "About",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "languages": {
+    "en": "English",
+    "fr": "Français"
+  }
+}

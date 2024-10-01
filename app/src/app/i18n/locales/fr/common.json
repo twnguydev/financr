@@ -1,0 +1,21 @@
+{
+  "navbar": {
+    "logo": "Financr",
+    "about": "Qui sommes-nous ?",
+    "services": "Services",
+    "uses-cases": "Cas d'utilisation",
+    "pricing": "Tarification",
+    "blog": "Blog",
+    "request-quote": "Demander un devis"
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "about": "À propos",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation"
+  },
+  "languages": {
+    "en": "English",
+    "fr": "Français"
+  }
+}
