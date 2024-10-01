@@ -9,7 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Satoshi', 'sans-serif'],
+        sans: ['GeistVF', 'sans-serif'],
+        mono: ['GeistMonoVF', 'sans-serif'],
       },
     },
   },

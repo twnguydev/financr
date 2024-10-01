@@ -60,7 +60,7 @@ export default function Footer(): JSX.Element {
 
         {/* Footer Bottom */}
         <div className="border-t border-gray-700 mt-12 pt-6 text-center">
-          <p className="text-sm">&copy; 2024 Financr. All rights reserved.</p>
+          <p className="font-mono text-sm">&copy; 2024 Financr. All rights reserved.</p>
         </div>
       </div>
     </footer>
