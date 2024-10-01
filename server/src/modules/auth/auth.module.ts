@@ -6,7 +6,7 @@ import { AuthService } from '@modules/auth/auth.service';
 import { AuthController } from '@modules/auth/auth.controller';
 import { UsersModule } from '@modules/users/users.module';
 import { JwtStrategy } from '@modules/auth/jwt.strategy';
-import { TenantsModule } from '../tenants/tenants.module';
+import { TenantsModule } from '@modules/tenants/tenants.module';
 
 @Module({
   imports: [

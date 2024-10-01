@@ -5,6 +5,7 @@ import * as bcrypt from 'bcrypt';
 import { User } from '@entities/user.entity';
 import { TenantsService } from '@modules/tenants/tenants.service';
 import { Tenant } from '@entities/tenant.entity';
+import { TenantRole } from '@entities/tenant.role.entity';
 import { PlatformRole } from '@enums/platform-role.enum';
 
 @Injectable()
@@ -25,7 +26,7 @@ export class AuthService {
   }
 
   async login(user: any): Promise<{ access_token: string }> {
-    const tenantRoles = await this.usersService.getTenantRoles(user.id);
+    const tenantRoles: TenantRole[] = await this.usersService.getTenantRoles(user.id);
     const payload = { email: user.email, sub: user.id, platformRole: user.platformRole, tenantRoles };
 
     return {

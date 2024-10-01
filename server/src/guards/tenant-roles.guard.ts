@@ -6,7 +6,7 @@ export class TenantRolesGuard implements CanActivate {
   constructor(private reflector: Reflector) {}
 
   canActivate(context: ExecutionContext): boolean {
-    const requiredRoles = this.reflector.get<string[]>('tenantRoles', context.getHandler());
+    const requiredRoles: string[] = this.reflector.get<string[]>('tenantRoles', context.getHandler());
     if (!requiredRoles) {
       return true;
     }
