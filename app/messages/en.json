@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "Financr - Your Financial Partner",
+    "description": "Financr provides financial solutions tailored to your needs. Contact us today for personalized advice and support.",
+    "keywords": "financial services, financial advice, investment solutions, personal finance",
+    "author": "Financr Team",
+    "robots": "index, follow"
+  },
+  "navbar": {
+    "home": "Financr",
+    "requestQuote": "Request a quote",
+    "aboutUs": "About us",
+    "services": "Services",
+    "useCases": "Use Cases",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "languages": {
+      "en": "English",
+      "fr": "Français"
+    }
+  },
+  "footer": {
+    "getInTouch": "Get in touch",
+    "phone": "(123) 456-7890",
+    "email": "contact@financr.com",
+    "address": "123 Financial Ave, Suite 100",
+    "cityState": "City, State, 12345",
+    "retrieveWhat": "Retrieve what you need",
+    "findUs": "Find us on social media",
+    "copyright": "© {currentYear} Financr. All rights reserved.",
+    "languages": {
+      "en": "English",
+      "fr": "Français"
+    },
+    "links": {
+      "about": "About",
+      "services": "Services",
+      "pricing": "Pricing",
+      "use-cases": "Use Cases",
+      "blog": "Blog",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    }
+  }
+}

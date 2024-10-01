@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "title": "Financr - Votre Partenaire Financier",
+    "description": "Financr propose des solutions financières adaptées à vos besoins. Contactez-nous dès aujourd'hui pour des conseils et un soutien personnalisés.",
+    "keywords": "services financiers, conseils financiers, solutions d'investissement, finance personnelle",
+    "author": "Équipe Financr",
+    "viewport": "width=device-width, initial-scale=1",
+    "robots": "index, follow"
+  },
+  "navbar": {
+    "home": "Financr",
+    "requestQuote": "Démarrer",
+    "aboutUs": "À propos",
+    "services": "Services",
+    "useCases": "Cas d'utilisation",
+    "pricing": "Tarifs",
+    "blog": "Blog",
+    "languages": {
+      "en": "English",
+      "fr": "Français"
+    }
+  },
+  "footer": {
+    "getInTouch": "Contactez-nous",
+    "phone": "(123) 456-7890",
+    "email": "contact@financr.com",
+    "address": "123 Avenue Financière, Suite 100",
+    "cityState": "Ville, État, 12345",
+    "retrieveWhat": "Trouvez ce dont vous avez besoin",
+    "findUs": "Retrouvez-nous sur les réseaux sociaux",
+    "copyright": "© {currentYear} Financr. Tous droits réservés.",
+    "languages": {
+      "en": "English",
+      "fr": "Français"
+    },
+    "links": {
+      "about": "À propos",
+      "services": "Services",
+      "pricing": "Tarifs",
+      "use-cases": "Cas d'utilisation",
+      "blog": "Blog",
+      "privacy": "Politique de confidentialité",
+      "terms": "Conditions d'utilisation"
+    }
+  }
+}

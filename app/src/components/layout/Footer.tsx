@@ -1,7 +1,11 @@
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram, Phone, Mail } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 export default function Footer(): JSX.Element {
+  const t = useTranslations('footer');
+
   return (
     <footer className="bg-black text-gray-300 py-16">
       <div className="container mx-auto px-6">
@@ -12,35 +16,44 @@ export default function Footer(): JSX.Element {
           
           {/* Contact Section */}
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">Get in touch</h3>
+            <h3 className="text-xl font-semibold text-white mb-4">{t('getInTouch')}</h3>
             <ul className="space-y-2">
               <li className="flex items-center mb-2">
-                <Phone className="mr-2" /> (123) 456-7890
+                <Phone className="mr-2" /> {t('phone')}
               </li>
               <li className="flex items-center mb-2">
-                <Mail className="mr-2" /> contact@financr.com
+                <Mail className="mr-2" /> {t('email')}
               </li>
-              <li>123 Financial Ave, Suite 100</li>
-              <li>City, State, 12345</li>
+              <li>{t('address')}</li>
+              <li>{t('cityState')}</li>
             </ul>
           </div>
           
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">Retrieve what you need</h3>
+            <h3 className="text-xl font-semibold text-white mb-4">{t('retrieveWhat')}</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-white">About Us</a></li>
-              <li><a href="#" className="hover:text-white">Services</a></li>
-              <li><a href="#" className="hover:text-white">Use Cases</a></li>
-              <li><a href="#" className="hover:text-white">Pricing</a></li>
-              <li><a href="#" className="hover:text-white">Blog</a></li>
-              <li><a href="#" className="hover:text-white">Contact</a></li>
+              <li><Link href="#" className="hover:text-white">{t('links.about')}</Link></li>
+              <li><Link href="#" className="hover:text-white">{t('links.services')}</Link></li>
+              <li><Link href="#" className="hover:text-white">{t('links.use-cases')}</Link></li>
+              <li><Link href="#" className="hover:text-white">{t('links.pricing')}</Link></li>
+              <li><Link href="#" className="hover:text-white">{t('links.blog')}</Link></li>
+            </ul>
+          </div>
+
+          {/* Language Support Section */}
+          <div>
+            <h3 className="text-xl font-semibold text-white mb-4">Languages</h3>
+            <ul className="space-y-2">
+              <li><Link href="/" locale="en" className="hover:text-white">{t('languages.en')}</Link></li>
+              <li><Link href="/fr" locale="fr" className="hover:text-white">{t('languages.fr')}</Link></li>
+              {/* Ajoutez d'autres langues ici si nécessaire */}
             </ul>
           </div>
 
           {/* Social Media Section */}
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">Find us on social media</h3>
+            <h3 className="text-xl font-semibold text-white mb-4">{t('findUs')}</h3>
             <div className="flex space-x-6">
               <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-white">
                 <Facebook size={24} />
@@ -60,7 +73,7 @@ export default function Footer(): JSX.Element {
 
         {/* Footer Bottom */}
         <div className="border-t border-gray-700 mt-12 pt-6 text-center">
-          <p className="font-mono text-sm">&copy; 2024 Financr. All rights reserved.</p>
+          <p className="font-mono text-sm">{t('copyright', {currentYear: new Date().getFullYear()})}</p>
         </div>
       </div>
     </footer>

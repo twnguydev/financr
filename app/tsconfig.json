@@ -24,7 +24,7 @@
       "@pages/*": ["./src/pages/*"],
       "@styles/*": ["./src/styles/*"],
       "@locales/*": ["./src/locales/*"],
-      "@i18n/*": ["./src/app/i18n/*"],
+      "@i18n/*": ["./src/i18n/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/ThemeProvider.tsx", "src/theme.ts", "src/pages/_app.js", "src/app/pages.jsx", "next-i18next.config.mjs"],
