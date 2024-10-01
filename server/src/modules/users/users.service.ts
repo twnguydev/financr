@@ -1,4 +1,4 @@
-import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
+import { Injectable, ConflictException, NotFoundException, BadRequestException } from '@nestjs/common';
 import { Repository, MoreThan } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { randomBytes } from 'crypto';
@@ -25,10 +25,10 @@ export class UsersService {
   }
 
   async findByVerificationToken(verificationToken: string): Promise<User | undefined> {
-    return this.usersRepository.findOne({ 
+    return this.usersRepository.findOne({
       where: {
         verificationToken: verificationToken,
-        verificationTokenExpiry: MoreThan(new Date()), // Vérifie que le token n'est pas expiré
+        verificationTokenExpiry: MoreThan(new Date()),
       },
     });
   }
@@ -39,13 +39,13 @@ export class UsersService {
     firstname: string,
     lastname: string,
     birthdate: Date,
-    address: { address: string; zipcode: string; city: string; country: string },
+    address: { address?: string; zipcode: string; city: string; country: string },
     verifyToken: string,
     verifyTokenExpiry: Date,
-    platformRole: PlatformRole,
+    platformRole?: PlatformRole,
   ): Promise<User> {
-    if (!(platformRole in PlatformRole)) {
-      throw new Error('Invalid platform role');
+    if (platformRole && !Object.values(PlatformRole).includes(platformRole)) {
+      throw new BadRequestException('Invalid platform role');
     }
 
     const existingUser: User = await this.findByEmail(email);
@@ -61,7 +61,7 @@ export class UsersService {
       firstname,
       lastname,
       birthdate,
-      address: address.address,
+      address: address.address || null,
       zipcode: address.zipcode,
       city: address.city,
       country: address.country,
@@ -102,16 +102,16 @@ export class UsersService {
 
   async verifyEmail(token: string): Promise<User | null> {
     const user = await this.findByVerificationToken(token);
-  
-    if (user) {
-      user.isActive = true;
-      user.verificationToken = null;
-      user.verificationTokenExpiry = null;
-      await this.update(user.id, user);
-    } else {
-      throw new NotFoundException('User not found');
+
+    if (!user) {
+      throw new NotFoundException('Invalid or expired token');
     }
-  
+
+    user.isActive = true;
+    user.verificationToken = null;
+    user.verificationTokenExpiry = null;
+    await this.update(user.id, user);
+
     return user;
   }
 

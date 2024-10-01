@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException, UnauthorizedException, BadRequestException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { randomBytes, verify } from 'crypto';
 import { UsersService } from '@modules/users/users.service';
@@ -49,15 +49,15 @@ export class AuthService {
     lastname: string,
     birthdate: Date,
     address: { address: string; zipcode: string; city: string; country: string },
-    platformRole: PlatformRole,
+    platformRole?: PlatformRole,
     tenantId?: string,
     tenantRole?: string
   ): Promise<User> {
-    if (!(platformRole in PlatformRole)) {
-      throw new Error('Invalid platform role');
+    if (platformRole && !Object.values(PlatformRole).includes(platformRole)) {
+      throw new BadRequestException('Invalid platform role');
     }
 
-    const existingUser = await this.usersService.findByEmail(email);
+    const existingUser: User | undefined = await this.usersService.findByEmail(email);
     if (existingUser) {
       throw new ConflictException('User with this email already exists');
     }

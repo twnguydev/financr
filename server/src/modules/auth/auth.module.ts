@@ -7,11 +7,13 @@ import { AuthController } from '@modules/auth/auth.controller';
 import { UsersModule } from '@modules/users/users.module';
 import { JwtStrategy } from '@modules/auth/jwt.strategy';
 import { TenantsModule } from '@modules/tenants/tenants.module';
+import { EmailModule } from '../email/email.module';
 
 @Module({
   imports: [
     UsersModule,
     TenantsModule,
+    EmailModule,
     PassportModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],

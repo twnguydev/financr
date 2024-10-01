@@ -4,8 +4,8 @@ import { Tenant } from '@entities/tenant.entity';
 
 @Entity()
 export class TenantRole {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @ManyToOne(() => User, user => user.tenantRoles, { eager: true })
   user: User;

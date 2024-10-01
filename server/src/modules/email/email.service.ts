@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import nodemailer from 'nodemailer';
+import * as nodemailer from 'nodemailer';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as Handlebars from 'handlebars';
@@ -11,7 +11,7 @@ export class EmailService {
 
   constructor() {
     this.transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
+      host: process.env.SMTP_SERVER,
       port: Number(process.env.SMTP_PORT),
       secure: false,
       auth: {
@@ -20,13 +20,18 @@ export class EmailService {
       },
     });
 
-    const templatePath = path.join(process.cwd(), 'templates', 'confirmation-email.html');
+    const templatePath: string = path.join(process.cwd(), 'src', 'modules', 'email', 'templates', 'confirmation-email.html');
+
+    if (!fs.existsSync(templatePath)) {
+      throw new Error(`Le modèle d'e-mail est introuvable à l'emplacement : ${templatePath}`);
+    }
+
     const templateSource = fs.readFileSync(templatePath, 'utf-8');
     this.emailTemplate = Handlebars.compile(templateSource);
   }
 
   async sendVerificationEmail(email: string, firstName: string, token: string): Promise<void> {
-    const verificationLink = `${process.env.FRONTEND_URL}/verify-email?token=${token}`;
+    const verificationLink = `${process.env.FRONTEND_URL}/fr/auth/verify?token=${token}`;
     
     const htmlContent = this.emailTemplate({
       firstName,

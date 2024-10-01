@@ -62,7 +62,7 @@ export class TenantsService {
 
   async assignRoleToUser(userId: string, tenantId: string, role: string): Promise<TenantRole> {
     const user = await this.usersRepository.findOne({ where: { id: userId } });
-    const tenant = await this.tenantsRepository.findOne({ where: { id: tenantId } });
+    const tenant = await this.tenantsRepository.findOne({ where: { id: tenantId }, relations: ['roles'] });
 
     if (!user || !tenant) {
       throw new Error('User or Tenant not found');
@@ -77,7 +77,7 @@ export class TenantsService {
   }
 
   async getRolesForTenant(tenantId: string): Promise<TenantRole[]> {
-    return this.tenantRolesRepository.find({ where: { id: tenantId } });
+    return this.tenantRolesRepository.find({ where: { tenant: { id: tenantId } }, relations: ['user'] });
   }
 
   async getTenantUsers(tenantId: string): Promise<User[]> {

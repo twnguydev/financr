@@ -35,13 +35,15 @@ export class AuthController {
         city: string; 
         country: string; 
       };
-      platformRole: PlatformRole 
+      platformRole?: PlatformRole 
     },
     @Query() query: { 
       tenantId?: string; 
       tenantRole?: string 
     }
   ): Promise<User> {
+    body.platformRole = body.platformRole || PlatformRole.USER;
+
     return this.authService.register(
       body.email,
       body.password,

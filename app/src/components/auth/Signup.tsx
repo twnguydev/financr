@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { redirect } from 'next/navigation';
+import axios from 'axios';
 import Link from 'next/link';
-import { ArrowRight, Mail, Lock, User, Calendar, MapPin } from 'lucide-react';
+import { ArrowRight, Mail, Lock, User, Calendar, MapPin, LoaderCircle, Loader } from 'lucide-react';
 
 const apiUrl: string | undefined = process.env.NEXT_PUBLIC_FINANCR_API_URL;
 
@@ -24,6 +25,7 @@ interface FormErrors {
   birthdate?: string;
   zipcode?: string;
   country?: string;
+  general?: string;
 }
 
 export default function SignupPage(): JSX.Element {
@@ -37,7 +39,9 @@ export default function SignupPage(): JSX.Element {
     country: '',
   });
   const [errors, setErrors] = useState<FormErrors>({});
-  const [city, setCity] = useState('');
+  const [success, setSuccess] = useState<string>('');
+  const [city, setCity] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   const validateForm = () => {
     const newErrors: FormErrors = {};
@@ -96,15 +100,43 @@ export default function SignupPage(): JSX.Element {
     setErrors(prev => ({ ...prev, [name]: undefined }));
   };
 
-  const sendRequest = () => {
-    fetch(`${apiUrl}/auth/register`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...formData, city }),
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error(error));
+  const sendRequest = async (): Promise<void> => {
+    const newErrors: FormErrors = {};
+
+    const data = {
+      firstname: formData.firstname,
+      lastname: formData.lastname,
+      birthdate: formData.birthdate,
+      password: formData.password,
+      email: formData.email,
+      address: {
+        address: '',
+        zipcode: formData.zipcode,
+        city,
+        country: formData.country,
+      },
+    }
+
+    try {
+      setLoading(true);
+      const response = await axios.post(`${apiUrl}/auth/register`, data);
+
+      if (response.status === 201) {
+        setSuccess('Your account has been created successfully. Please check your email to verify your account.');
+      } else {
+        newErrors.general = 'An error occurred. Please try again.';
+        setErrors(newErrors);
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.data.status === 409) {
+        newErrors.general = 'An account with this email already exists.';
+      } else {
+        newErrors.general = 'An error occurred. Please try again.';
+      }
+      setErrors(newErrors);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -267,11 +299,17 @@ export default function SignupPage(): JSX.Element {
               />
             </div>
           )}
+          {errors.general && <p className="text-red-500 text-sm my-4">{errors.general}</p>}
+          {success && <p className="text-green-500 text-sm my-4">{success}</p>}
           <button
             type="submit"
-            className="w-full bg-black text-white font-bold py-3 px-4 rounded-full hover:bg-gray-800 transition duration-300"
+            className="w-full flex justify-center items-center bg-black text-white font-bold py-3 px-4 rounded-full hover:bg-gray-800 transition duration-300"
           >
-            Create Account
+            {loading ? (
+              <LoaderCircle className="animate-spin w-5 h-5 text-white" />
+            ) : (
+              'Create Account'
+            )}
           </button>
         </form>
 

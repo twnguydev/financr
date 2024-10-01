@@ -18,6 +18,7 @@
       "@enums/*": ["src/common/enums/*"],
       "@shared/*": ["src/shared/*"],
       "@config/*": ["src/config/*"],
+      "@filters/*": ["src/filters/*"],
     }
   }
 }
