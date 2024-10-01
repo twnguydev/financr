@@ -1,6 +1,7 @@
 import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { Repository, MoreThan } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { randomBytes } from 'crypto';
 import { User } from '@entities/user.entity';
 import { Tenant } from '@entities/tenant.entity';
 import { TenantRole } from '@entities/tenant.role.entity';
@@ -23,6 +24,15 @@ export class UsersService {
     });
   }
 
+  async findByVerificationToken(verificationToken: string): Promise<User | undefined> {
+    return this.usersRepository.findOne({ 
+      where: {
+        verificationToken: verificationToken,
+        verificationTokenExpiry: MoreThan(new Date()), // Vérifie que le token n'est pas expiré
+      },
+    });
+  }
+
   async create(
     email: string,
     password: string,
@@ -30,6 +40,8 @@ export class UsersService {
     lastname: string,
     birthdate: Date,
     address: { address: string; zipcode: string; city: string; country: string },
+    verifyToken: string,
+    verifyTokenExpiry: Date,
     platformRole: PlatformRole,
   ): Promise<User> {
     if (!(platformRole in PlatformRole)) {
@@ -53,6 +65,8 @@ export class UsersService {
       zipcode: address.zipcode,
       city: address.city,
       country: address.country,
+      verificationToken: verifyToken,
+      verificationTokenExpiry: verifyTokenExpiry,
       platformRole
     });
 
@@ -84,5 +98,24 @@ export class UsersService {
   async remove(id: string): Promise<void> {
     const user = await this.findById(id);
     await this.usersRepository.remove(user);
+  }
+
+  async verifyEmail(token: string): Promise<User | null> {
+    const user = await this.findByVerificationToken(token);
+  
+    if (user) {
+      user.isActive = true;
+      user.verificationToken = null;
+      user.verificationTokenExpiry = null;
+      await this.update(user.id, user);
+    } else {
+      throw new NotFoundException('User not found');
+    }
+  
+    return user;
+  }
+
+  generateVerifyToken(): string {
+    return randomBytes(32).toString('hex');
   }
 }

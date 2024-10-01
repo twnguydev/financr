@@ -1,12 +1,16 @@
-import { Controller, Post, Body, UseGuards, Request, UnauthorizedException, Query } from '@nestjs/common';
+import { Controller, Post, Get, Body, UseGuards, Request, UnauthorizedException, Query } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from '@modules/auth/auth.service';
+import { UsersService } from '@modules/users/users.service';
 import { User } from '@entities/user.entity';
 import { PlatformRole } from '@enums/platform-role.enum';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private usersService: UsersService
+  ) {}
 
   @Post('login')
   async login(@Body() body: { email: string; password: string }): Promise<{ access_token: string }> {
@@ -49,6 +53,17 @@ export class AuthController {
       query.tenantId || undefined,
       query.tenantRole || undefined
     );
+  }
+
+  @Get('verify-email')
+  async verifyEmail(@Query('token') token: string): Promise<{ message: string }> {
+    const user = await this.usersService.verifyEmail(token);
+
+    if (user) {
+      return { message: 'Votre e-mail a été vérifié avec succès !' };
+    } else {
+      return { message: 'Le token est invalide ou a expiré.' };
+    }
   }
 
   @UseGuards(AuthGuard('jwt'))

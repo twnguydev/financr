@@ -1,9 +1,11 @@
 import { ConflictException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { randomBytes, verify } from 'crypto';
 import { UsersService } from '@modules/users/users.service';
 import * as bcrypt from 'bcrypt';
 import { User } from '@entities/user.entity';
 import { TenantsService } from '@modules/tenants/tenants.service';
+import { EmailService } from '@modules/email/email.service';
 import { Tenant } from '@entities/tenant.entity';
 import { TenantRole } from '@entities/tenant.role.entity';
 import { PlatformRole } from '@enums/platform-role.enum';
@@ -13,14 +15,20 @@ export class AuthService {
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
-    private tenantsService: TenantsService
+    private tenantsService: TenantsService,
+    private emailService: EmailService,
   ) { }
 
   async validateUser(email: string, password: string): Promise<User | null> {
     const user = await this.usersService.findByEmail(email);
+    const isUserEmailValidated = user && user.isActive;
     if (user && await bcrypt.compare(password, user.password)) {
       const { password, ...result } = user;
       return result;
+    } else if (user && !isUserEmailValidated) {
+      throw new UnauthorizedException('Email not validated');
+    } else {
+      throw new UnauthorizedException('Invalid credentials');
     }
     return null;
   }
@@ -70,6 +78,7 @@ export class AuthService {
     }
 
     const hashedPassword: string = await bcrypt.hash(password, 10);
+    const verifyToken: string = this.generateVerifyToken();
 
     const newUser: Promise<User> = this.usersService.create(
       email,
@@ -78,10 +87,14 @@ export class AuthService {
       lastname,
       birthdate,
       address,
+      verifyToken,
+      new Date(Date.now() + 3600000),
       platformRole,
     );
 
     const savedUser: User = await newUser;
+
+    await this.emailService.sendVerificationEmail(savedUser.email, savedUser.firstname, verifyToken);
 
     if (tenant) {
       await this.tenantsService.assignRoleToUser(savedUser.id, tenant.id, tenantRole || 'user');
@@ -89,5 +102,9 @@ export class AuthService {
 
     const userWithRoles: User = await this.usersService.findByEmail(email);
     return userWithRoles;
+  }
+
+  generateVerifyToken(): string {
+    return randomBytes(32).toString('hex');
   }
 }

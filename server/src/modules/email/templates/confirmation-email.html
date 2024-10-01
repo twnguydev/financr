@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmez votre adresse e-mail - Financr</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #000;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #000;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #333;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenue chez Financr !</h1>
+        <p>Bonjour {{firstName}},</p>
+        <p>Merci d'avoir rejoint Financr. Pour commencer votre parcours vers des investissements plus intelligents, veuillez confirmer votre adresse e-mail en cliquant sur le bouton ci-dessous :</p>
+        <p style="text-align: center;">
+            <a href="{{verificationLink}}" class="button">Confirmer mon adresse e-mail</a>
+        </p>
+        <p>Si le bouton ne fonctionne pas, vous pouvez également copier et coller le lien suivant dans votre navigateur :</p>
+        <p>{{verificationLink}}</p>
+        <p>Ce lien expirera dans 24 heures pour des raisons de sécurité. Si vous n'avez pas créé de compte chez Financr, vous pouvez ignorer cet e-mail.</p>
+        <p>Nous sommes ravis de vous avoir parmi nous et avons hâte de vous aider à atteindre vos objectifs financiers.</p>
+        <p>Cordialement,<br>L'équipe Financr</p>
+    </div>
+    <div class="footer">
+        <p>© {{currentYear}} Financr. Tous droits réservés.</p>
+        <p>Vous recevez cet e-mail car vous vous êtes inscrit sur Financr. Si vous pensez qu'il s'agit d'une erreur, veuillez nous contacter à support@financr.com</p>
+    </div>
+</body>
+</html>

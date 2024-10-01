@@ -24,7 +24,18 @@ export class UsersController {
       platformRole: PlatformRole
     }
   ): Promise<User> {
-    return this.usersService.create(body.email, body.password, body.firstname, body.lastname, body.birthdate, body.address, body.platformRole);
+    const verifyToken: string = this.usersService.generateVerifyToken();
+    return this.usersService.create(
+      body.email,
+      body.password,
+      body.firstname,
+      body.lastname,
+      body.birthdate,
+      body.address,
+      verifyToken,
+      new Date(Date.now() + 3600000),
+      body.platformRole
+    );
   }
 
   @Get()

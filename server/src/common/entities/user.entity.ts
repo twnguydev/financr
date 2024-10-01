@@ -40,6 +40,15 @@ export class User {
   @Column({ nullable: true })
   country: string;
 
+  @Column({ nullable: true })
+  verificationToken?: string;
+
+  @Column({ type: 'timestamp', nullable: true })
+  verificationTokenExpiry?: Date;
+
+  @Column({ type: 'boolean', default: false })
+  isActive: boolean;
+
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', readonly: true })
   createdAt: Date;
 
