@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "Financr - Votre Partenaire Financier",
+    "title": "Financr - Votre partenaire financier",
     "description": "Financr propose des solutions financières adaptées à vos besoins. Contactez-nous dès aujourd'hui pour des conseils et un soutien personnalisés.",
     "keywords": "services financiers, conseils financiers, solutions d'investissement, finance personnelle",
     "author": "Équipe Financr",
@@ -42,5 +42,87 @@
       "privacy": "Politique de confidentialité",
       "terms": "Conditions d'utilisation"
     }
+  },
+  "landingPage": {
+    "heroTitle": "Naviguer dans le paysage financier pour réussir",
+    "heroDescription": "Notre plateforme de gestion des investissements aide les entreprises à se développer et à réussir grâce à une gamme de services incluant le suivi des portefeuilles, l'analyse des risques et l'optimisation des performances.",
+    "heroButton": "Réserver une consultation",
+    "learnMore": "En savoir plus",
+    "whatWeOfferTitle": "Ce que nous offrons",
+    "whatWeOfferDescription": "Notre plateforme d'investissement offre une gamme de services pour aider les entreprises à croître et réussir financièrement. Ces services incluent:",
+    "portfolioTracking": {
+      "title": "Suivi de portefeuille",
+      "description": "Surveillance en temps réel de vos investissements à travers plusieurs classes d'actifs."
+    },
+    "riskAnalysis": {
+      "title": "Analyse des risques",
+      "description": "Algorithmes avancés pour évaluer et atténuer les risques potentiels d'investissement."
+    },
+    "performanceOptimization": {
+      "title": "Optimisation des performances",
+      "description": "Suggestions basées sur l'IA pour optimiser les performances de votre portefeuille d'investissement."
+    },
+    "marketInsights": {
+      "title": "Aperçus du marché",
+      "description": "Des nouvelles financières et des analyses sélectionnées pour informer vos décisions d'investissement."
+    },
+    "subscriptionsTitle": "Nous nous adaptons à vos besoins",
+    "subscriptionsDescription": "Trouvez le plan parfait conçu pour évoluer avec votre stratégie d'investissement et atteindre vos objectifs financiers.",
+    "subscriptionsBadge": "Le plus populaire",
+    "subscriptionPricePeriod": "mois",
+    "subscriptionStarter": {
+      "title": "Personnel",
+      "price": "29€",
+      "features": [
+        "Suivi de portefeuille (jusqu'à 3 portefeuilles)",
+        "Analyse des risques de base",
+        "Nouvelles et aperçus du marché",
+        "Support par email",
+        "Essai gratuit de 14 jours"
+      ]
+    },
+    "subscriptionProfessional": {
+      "title": "Professionnel",
+      "price": "99€",
+      "features": [
+        "Le pack Débutant",
+        "Suivi de portefeuille illimité",
+        "Analyse des risques avancée",
+        "Optimisation des performances basée sur l'IA",
+        "Prédictions du marché basées sur l'IA",
+        "Support prioritaire 24/7 (chat & email)",
+        "Essai gratuit de 14 jours"
+      ]
+    },
+    "subscriptionEnterprise": {
+      "title": "Entreprise",
+      "price": "499€",
+      "features": [
+        "Le pack Professionnel",
+        "Accès API personnalisé",
+        "Gestionnaire de compte dédié",
+        "Modèles IA personnalisés",
+        "Accès multi-utilisateurs (jusqu'à 10 utilisateurs)",
+        "Outils de conformité et de reporting réglementaire",
+        "Sessions de formation à la demande",
+        "Essai gratuit de 14 jours"
+      ]
+    },
+    "caseStudyTitle": "Étude de cas",
+    "caseStudyHedgeFund": {
+      "title": "Pour un fonds spéculatif",
+      "description": "Nous avons mis en place une stratégie d'analyse des risques qui a entraîné une réduction de 30 % de la volatilité du portefeuille et une augmentation de 15 % des rendements annuels."
+    },
+    "caseStudyRetailInvestor": {
+      "title": "Pour un investisseur particulier",
+      "description": "Notre outil d'optimisation de portefeuille a permis d'obtenir une augmentation de 25 % des performances globales du portefeuille au cours de la première année d'utilisation."
+    },
+    "caseStudyPensionFund": {
+      "title": "Pour un fonds de pension",
+      "description": "Nos aperçus du marché et notre suivi des performances ont conduit à un portefeuille plus diversifié, avec une croissance stable de 8 % d'une année sur l'autre."
+    },
+    "callToActionTitle": "Faisons bouger les choses",
+    "callToActionDescription": "Contactez-nous dès aujourd'hui pour en savoir plus sur la manière dont nos services de gestion des investissements peuvent aider votre entreprise à croître et réussir financièrement.",
+    "callToActionButton": "Obtenez votre proposition gratuite"
   }
 }

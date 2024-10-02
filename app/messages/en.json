@@ -41,5 +41,87 @@
       "privacy": "Privacy Policy",
       "terms": "Terms of Service"
     }
+  },
+  "landingPage": {
+    "heroTitle": "Navigating the financial landscape for success",
+    "heroDescription": "Our investment management platform helps businesses grow and succeed through a range of services including portfolio tracking, risk analysis, and performance optimization.",
+    "heroButton": "Get started",
+    "learnMore": "Learn more",
+    "whatWeOfferTitle": "What we offer",
+    "whatWeOfferDescription": "Our investment platform offers a range of services to help businesses grow and succeed financially. These services include :",
+    "portfolioTracking": {
+      "title": "Portfolio Tracking",
+      "description": "Real-time monitoring of your investments across multiple asset classes."
+    },
+    "riskAnalysis": {
+      "title": "Risk Analysis",
+      "description": "Advanced algorithms to assess and mitigate potential investment risks."
+    },
+    "performanceOptimization": {
+      "title": "Performance Optimization",
+      "description": "AI-driven suggestions to optimize your investment portfolio performance."
+    },
+    "marketInsights": {
+      "title": "Market Insights",
+      "description": "Curated financial news and analysis to inform your investment decisions."
+    },
+    "subscriptionsTitle": "Subscriptions tailored to your needs",
+    "subscriptionsDescription": "Find the perfect plan designed to grow with your investment strategy and achieve your financial goals.",
+    "subscriptionsBadge": "Most popular",
+    "subscriptionPricePeriod": "month",
+    "subscriptionStarter": {
+      "title": "Starter",
+      "price": "$29",
+      "features": [
+        "Portfolio tracking (up to 3 portfolios)",
+        "Basic risk analysis",
+        "Market news and insights",
+        "Email support",
+        "14-day free trial"
+      ]
+    },
+    "subscriptionProfessional": {
+      "title": "Professional",
+      "price": "$99",
+      "features": [
+        "Everything in Starter",
+        "Unlimited portfolio tracking",
+        "Advanced risk analysis",
+        "AI-driven performance optimization",
+        "Market predictions based on AI",
+        "24/7 priority support (chat & email)",
+        "14-day free trial"
+      ]
+    },
+    "subscriptionEnterprise": {
+      "title": "Enterprise",
+      "price": "$499",
+      "features": [
+        "Everything in Professional",
+        "Custom API access",
+        "Dedicated account manager",
+        "Tailored AI models",
+        "Multi-user access (up to 10 users)",
+        "Compliance and regulatory reporting tools",
+        "On-demand training sessions",
+        "14-day free trial"
+      ]
+    },
+    "caseStudyTitle": "Case study",
+    "caseStudyHedgeFund": {
+      "title": "For a hedge fund",
+      "description": "We implemented a risk analysis strategy that resulted in a 30% reduction in portfolio volatility and a 15% increase in annual returns."
+    },
+    "caseStudyRetailInvestor": {
+      "title": "For a retail investor",
+      "description": "Our portfolio optimization tool helped achieve a 25% increase in overall portfolio performance within the first year of use."
+    },
+    "caseStudyPensionFund": {
+      "title": "For a pension fund",
+      "description": "Our market insights and performance tracking led to a more diversified portfolio, resulting in stable 8% year-over-year growth."
+    },
+    "callToActionTitle": "Let's make things happen",
+    "callToActionDescription": "Contact us today to learn more about how our investment management services can help your business grow and succeed financially.",
+    "callToActionButton": "Get your free proposal"
   }
 }

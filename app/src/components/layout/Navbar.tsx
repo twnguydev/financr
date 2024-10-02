@@ -30,7 +30,7 @@ const Navbar = () => {
   const toggleSubmenu = () => setIsSubmenuOpen(!isSubmenuOpen);
 
   return (
-    <nav className="lg:container md:mx-0 lg:mx-auto px-4 py-2">
+    <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2">
       <div className="flex justify-between items-center py-4">
         <Link href="/" className="font-bold text-4xl text-gray-800">
           {t('home')}

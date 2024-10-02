@@ -90,6 +90,10 @@ export default function SignupPage(): JSX.Element {
       newErrors.zipcode = 'Zip code must be a number';
     }
 
+    if (!city) {
+      newErrors.zipcode = 'Zip code is invalid';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
