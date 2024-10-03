@@ -65,10 +65,12 @@ const Navbar = () => {
               ))}
             </div>
           </div>
-          <button className="inline-flex items-center bg-black text-white font-bold px-4 py-2 rounded-full hover:bg-gray-800 transition-colors group">
+          <Link 
+            href="/auth/login"
+            className="inline-flex cursor-pointer items-center bg-black text-white font-bold px-4 py-2 rounded-full hover:bg-gray-800 transition-colors group">
             {t('requestQuote')}
             <ArrowRight className="ml-3 transition-transform duration-300 ease-in-out transform group-hover:translate-x-2" size={16} />
-          </button>
+          </Link>
         </div>
 
         <button className="md:hidden text-gray-600 hover:text-gray-800 transition-colors" onClick={toggleMenu}>
@@ -108,9 +110,11 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <button className="mt-4 w-full font-bold bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">
+          <Link
+            href="/auth/login"
+            className="mt-4 w-full font-bold bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">
             {t('requestQuote')}
-          </button>
+          </Link>
         </div>
       )}
     </nav>

@@ -59,7 +59,7 @@ export default function LandingPage(): JSX.Element {
         <p className="font-mono text-lg sm:text-xl text-gray-600 mb-8">
           {t('whatWeOfferDescription')}
         </p>
-        <div className="grid lg:gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-4 lg:gap-6 sm:grid-cols-2 xl:grid-cols-4">
           <ServiceCard
             icon={<Search />}
             title={t('portfolioTracking.title')}

@@ -8,7 +8,7 @@
   },
   "navbar": {
     "home": "Financr",
-    "requestQuote": "Request a quote",
+    "requestQuote": "Start now",
     "aboutUs": "About us",
     "services": "Services",
     "useCases": "Use Cases",
@@ -28,6 +28,7 @@
     "retrieveWhat": "Retrieve what you need",
     "findUs": "Find us on social media",
     "copyright": "© {currentYear} Financr. All rights reserved.",
+    "languagesTitle": "Supported languages",
     "languages": {
       "en": "English",
       "fr": "Français"
@@ -123,5 +124,145 @@
     "callToActionTitle": "Let's make things happen",
     "callToActionDescription": "Contact us today to learn more about how our investment management services can help your business grow and succeed financially.",
     "callToActionButton": "Get your free proposal"
+  },
+  "services": {
+    "title": "Tailored investment solutions",
+    "description": "We offer a comprehensive range of investment management services designed to fuel your business growth. Discover the right solutions for your financial success.",
+    "cta": "Get Started",
+    "smartPortfolioTracking": {
+      "title": "Smart Portfolio Tracking",
+      "description": "Get real-time insights across multiple asset classes to stay ahead.",
+      "features": [
+        "Real-time updates on portfolio performance",
+        "Custom dashboards for quick insights",
+        "Multi-asset class support",
+        "Historical performance analysis",
+        "Automated reporting and alerts"
+      ]
+    },
+    "advancedRiskAnalysis": {
+      "title": "Advanced Risk Analysis",
+      "description": "Leverage our algorithms to safeguard your investments with confidence.",
+      "features": [
+        "Comprehensive risk assessment reports",
+        "Scenario analysis and stress testing",
+        "Risk-adjusted performance metrics",
+        "Correlation and diversification analysis",
+        "Custom risk tolerance settings"
+      ]
+    },
+    "performanceOptimization": {
+      "title": "Performance Optimization",
+      "description": "Boost your portfolio with AI-driven rebalancing and strategic insights.",
+      "features": [
+        "AI-powered portfolio rebalancing suggestions",
+        "Tax-loss harvesting recommendations",
+        "Asset allocation optimization",
+        "Performance attribution analysis",
+        "Benchmark comparison and tracking"
+      ]
+    },
+    "actionableMarketInsights": {
+      "title": "Actionable Market Insights",
+      "description": "Stay informed with curated news and financial analysis tailored to you.",
+      "features": [
+        "Real-time market news and updates",
+        "Personalized news feed based on your portfolio",
+        "Expert analysis and commentary",
+        "Economic indicators and forecasts",
+        "Industry and sector reports"
+      ]
+    },
+    "theEdge": {
+      "title": "The edge you need to succeed",
+      "description": "Our suite of investment services empowers you to navigate the financial landscape with precision. Here’s how we drive tangible results for your business growth:",
+      "growth": {
+        "title": "Accelerated Growth",
+        "description": "AI-driven insights help optimize your portfolio, potentially boosting returns by up to 15%."
+      },
+      "riskManagement": {
+        "title": "Robust Risk Management",
+        "description": "Our tools reduce portfolio volatility by an average of 30%, keeping your investments secure."
+      },
+      "efficiency": {
+        "title": "Efficiency & Automation",
+        "description": "Save time with automated processes and actionable insights, freeing up to 20 hours weekly."
+      },
+      "cta": "Start optimizing your investments today"
+    }
+  },
+  "login": {
+    "title": "Welcome Back to Financr",
+    "subtitle": "Log in to access your investment dashboard and insights.",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "john.doe@example.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "loginButton": "Log In",
+    "forgotPassword": "Forgot your password?",
+    "noAccount": "Don't have an account?",
+    "signupHere": "Sign up here",
+    "backToHome": "Back to home"
+  },
+  "signup": {
+    "title": "Join Financr Today",
+    "subtitle": "Start your journey to smarter investments with our 14-day free trial.",
+    "labels": {
+      "email": "Email Address",
+      "password": "Password",
+      "firstname": "First Name",
+      "lastname": "Last Name",
+      "birthdate": "Date of Birth",
+      "country": "Country",
+      "zipcode": "Zip Code",
+      "city": "City"
+    },
+    "placeholders": {
+      "email": "john.doe@example.com",
+      "password": "••••••••",
+      "firstname": "John",
+      "lastname": "Doe",
+      "country": "Select a country",
+      "zipcode": "90210"
+    },
+    "errors": {
+      "email": {
+        "required": "Email is required",
+        "invalid": "Email is invalid"
+      },
+      "password": {
+        "required": "Password is required",
+        "minLength": "Password must be at least 8 characters long"
+      },
+      "firstname": {
+        "required": "First name is required"
+      },
+      "lastname": {
+        "required": "Last name is required"
+      },
+      "birthdate": {
+        "required": "Date of birth is required",
+        "underage": "You must be at least 18 years old"
+      },
+      "country": {
+        "required": "Country is required"
+      },
+      "zipcode": {
+        "required": "Zip code is required",
+        "invalid": "Zip code must be a number"
+      },
+      "general": "An error occurred. Please try again.",
+      "accountAlreadyExists": "An account with this email already exists."
+    },
+    "messages": {
+      "success": "Your account has been created successfully. Please check your email to verify your account.",
+      "alreadyHaveAccount": "Already have an account?",
+      "backToHome": "Back to home",
+      "loading": "Creating your account..."
+    },
+    "buttons": {
+      "createAccount": "Create Account",
+      "loginHere": "Log in here"
+    }
   }
 }

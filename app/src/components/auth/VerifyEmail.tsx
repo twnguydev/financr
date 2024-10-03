@@ -42,7 +42,7 @@ export default function VerifyEmailPage(): JSX.Element {
         setShowToast(true);
         setTimeout(() => {
           router.push('/fr');
-        }, 3000);
+        }, 10000);
         return;
       }
 
@@ -62,7 +62,7 @@ export default function VerifyEmailPage(): JSX.Element {
 
           setTimeout(() => {
             router.push('/fr/auth/login');
-          }, 3000);
+          }, 10000);
         } else {
           throw new Error('Verification failed with status: ' + response.status);
         }
@@ -77,7 +77,7 @@ export default function VerifyEmailPage(): JSX.Element {
 
         setTimeout(() => {
           router.push('/fr');
-        }, 3000);
+        }, 10000);
       }
     };
 

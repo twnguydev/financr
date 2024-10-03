@@ -29,6 +29,7 @@
     "retrieveWhat": "Trouvez ce dont vous avez besoin",
     "findUs": "Retrouvez-nous sur les réseaux sociaux",
     "copyright": "© {currentYear} Financr. Tous droits réservés.",
+    "languagesTitle": "Langages supportés",
     "languages": {
       "en": "English",
       "fr": "Français"
@@ -46,7 +47,7 @@
   "landingPage": {
     "heroTitle": "Naviguer dans le paysage financier pour réussir",
     "heroDescription": "Notre plateforme de gestion des investissements aide les entreprises à se développer et à réussir grâce à une gamme de services incluant le suivi des portefeuilles, l'analyse des risques et l'optimisation des performances.",
-    "heroButton": "Réserver une consultation",
+    "heroButton": "Commencer maintenant",
     "learnMore": "En savoir plus",
     "whatWeOfferTitle": "Ce que nous offrons",
     "whatWeOfferDescription": "Notre plateforme d'investissement offre une gamme de services pour aider les entreprises à croître et réussir financièrement. Ces services incluent:",
@@ -124,5 +125,145 @@
     "callToActionTitle": "Faisons bouger les choses",
     "callToActionDescription": "Contactez-nous dès aujourd'hui pour en savoir plus sur la manière dont nos services de gestion des investissements peuvent aider votre entreprise à croître et réussir financièrement.",
     "callToActionButton": "Obtenez votre proposition gratuite"
+  },
+  "services": {
+    "title": "Solutions d'investissement sur mesure",
+    "description": "Nous proposons une gamme complète de services de gestion d'investissement conçus pour stimuler la croissance de votre entreprise. Découvrez les solutions adaptées à votre réussite financière.",
+    "cta": "Commencer maintenant",
+    "smartPortfolioTracking": {
+      "title": "Suivi de portefeuille intelligent",
+      "description": "Obtenez des informations en temps réel sur plusieurs classes d'actifs pour garder une longueur d'avance.",
+      "features": [
+        "Mises à jour en temps réel sur la performance du portefeuille",
+        "Tableaux de bord personnalisés pour des informations rapides",
+        "Support multi-classe d'actifs",
+        "Analyse de la performance historique",
+        "Rapports et alertes automatisés"
+      ]
+    },
+    "advancedRiskAnalysis": {
+      "title": "Analyse de risque avancée",
+      "description": "Exploitez nos algorithmes pour protéger vos investissements en toute confiance.",
+      "features": [
+        "Rapports d'évaluation des risques complets",
+        "Analyse de scénarios et tests de résistance",
+        "Mesures de performance ajustées au risque",
+        "Analyse de corrélation et diversification",
+        "Paramètres de tolérance au risque personnalisés"
+      ]
+    },
+    "performanceOptimization": {
+      "title": "Optimisation des performances",
+      "description": "Améliorez votre portefeuille avec un rééquilibrage piloté par l'IA et des analyses stratégiques.",
+      "features": [
+        "Suggestions de rééquilibrage du portefeuille alimentées par l'IA",
+        "Recommandations de récolte des pertes fiscales",
+        "Optimisation de l'allocation d'actifs",
+        "Analyse d'attribution de performance",
+        "Comparaison et suivi des indices de référence"
+      ]
+    },
+    "actionableMarketInsights": {
+      "title": "Aperçus de marché exploitables",
+      "description": "Restez informé avec des actualités et des analyses financières personnalisées pour vous.",
+      "features": [
+        "Actualités et mises à jour en temps réel du marché",
+        "Flux d'actualités personnalisé basé sur votre portefeuille",
+        "Analyses et commentaires d'experts",
+        "Indicateurs économiques et prévisions",
+        "Rapports sectoriels et d'industrie"
+      ]
+    },
+    "theEdge": {
+      "title": "L'avantage dont vous avez besoin pour réussir",
+      "description": "Notre gamme de services d'investissement vous permet de naviguer dans le paysage financier avec précision. Voici comment nous obtenons des résultats tangibles pour la croissance de votre entreprise :",
+      "growth": {
+        "title": "Croissance accélérée",
+        "description": "Des analyses pilotées par l'IA optimisent votre portefeuille, augmentant potentiellement les rendements de jusqu'à 15%."
+      },
+      "riskManagement": {
+        "title": "Gestion des risques robuste",
+        "description": "Nos outils réduisent la volatilité du portefeuille de 30% en moyenne, garantissant la sécurité de vos investissements."
+      },
+      "efficiency": {
+        "title": "Efficacité & Automatisation",
+        "description": "Gagnez du temps grâce à des processus automatisés et des analyses exploitables, libérant jusqu'à 20 heures par semaine."
+      },
+      "cta": "Commencez à optimiser vos investissements dès aujourd'hui"
+    }
+  },
+  "login": {
+    "title": "Bienvenue chez Financr",
+    "subtitle": "Connectez-vous pour accéder à votre tableau de bord et aux insights.",
+    "emailLabel": "Adresse e-mail",
+    "emailPlaceholder": "john.doe@example.fr",
+    "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "••••••••",
+    "loginButton": "Connexion",
+    "forgotPassword": "Mot de passe oublié ?",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "signupHere": "Inscrivez-vous ici",
+    "backToHome": "Retour à l'accueil"
+  },
+  "signup": {
+    "title": "Rejoignez Financr dès aujourd'hui",
+    "subtitle": "Commencez votre parcours vers des investissements plus intelligents avec notre essai gratuit de 14 jours.",
+    "labels": {
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "birthdate": "Date de naissance",
+      "country": "Pays",
+      "zipcode": "Code postal",
+      "city": "Ville"
+    },
+    "placeholders": {
+      "email": "john.doe@example.fr",
+      "password": "••••••••",
+      "firstname": "John",
+      "lastname": "Doe",
+      "country": "Sélectionner un pays",
+      "zipcode": "90210"
+    },
+    "errors": {
+      "email": {
+        "required": "L'adresse e-mail est requise",
+        "invalid": "L'adresse e-mail est invalide"
+      },
+      "password": {
+        "required": "Le mot de passe est requis",
+        "minLength": "Le mot de passe doit comporter au moins 8 caractères"
+      },
+      "firstname": {
+        "required": "Le prénom est requis"
+      },
+      "lastname": {
+        "required": "Le nom est requis"
+      },
+      "birthdate": {
+        "required": "La date de naissance est requise",
+        "underage": "Vous devez avoir au moins 18 ans"
+      },
+      "country": {
+        "required": "Le pays est requis"
+      },
+      "zipcode": {
+        "required": "Le code postal est requis",
+        "invalid": "Le code postal doit être un nombre"
+      },
+      "general": "Une erreur s'est produite. Veuillez réessayer.",
+      "accountAlreadyExists": "Un compte avec cette adresse e-mail existe déjà."
+    },
+    "messages": {
+      "success": "Votre compte a été créé avec succès. Veuillez vérifier votre e-mail pour confirmer votre compte.",
+      "alreadyHaveAccount": "Vous avez déjà un compte ?",
+      "backToHome": "Retour à l'accueil",
+      "loading": "Création de votre compte..."
+    },
+    "buttons": {
+      "createAccount": "Créer un compte",
+      "loginHere": "Connectez-vous ici"
+    }
   }
 }

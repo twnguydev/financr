@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { redirect } from 'next/navigation';
+import { Link } from '@i18n/routing';
 import axios from 'axios';
-import Link from 'next/link';
-import { ArrowRight, Mail, Lock, User, Calendar, MapPin, LoaderCircle, Loader } from 'lucide-react';
+import { ArrowRight, Mail, Lock, User, Calendar, MapPin, LoaderCircle } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const apiUrl: string | undefined = process.env.NEXT_PUBLIC_FINANCR_API_URL;
 
@@ -43,31 +43,33 @@ export default function SignupPage(): JSX.Element {
   const [city, setCity] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
+  const t = useTranslations('signup');
+
   const validateForm = () => {
     const newErrors: FormErrors = {};
 
     if (!formData.email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = t('errors.email.required');
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = t('errors.email.invalid')
     }
 
     if (!formData.password) {
-      newErrors.password = 'Password is required';
+      newErrors.password = t('errors.password.required');
     } else if (formData.password.length < 8) {
-      newErrors.password = 'Password must be at least 8 characters long';
+      newErrors.password = t('errors.password.minLength');
     }
 
     if (!formData.firstname) {
-      newErrors.firstname = 'First name is required';
+      newErrors.firstname = t('errors.firstname.required');
     }
 
     if (!formData.lastname) {
-      newErrors.lastname = 'Last name is required';
+      newErrors.lastname = t('errors.lastname.required');
     }
 
     if (!formData.birthdate) {
-      newErrors.birthdate = 'Date of birth is required';
+      newErrors.birthdate = t('errors.birthdate.required');
     } else {
       const birthdate = new Date(formData.birthdate);
       const now = new Date();
@@ -76,22 +78,22 @@ export default function SignupPage(): JSX.Element {
         age--;
       }
       if (age < 18) {
-        newErrors.birthdate = 'You must be at least 18 years old';
+        newErrors.birthdate = t('errors.birthdate.underage');
       }
     }
 
     if (!formData.country) {
-      newErrors.country = 'Country is required';
+      newErrors.country = t('errors.country.required');
     }
 
     if (!formData.zipcode) {
-      newErrors.zipcode = 'Zip code is required';
+      newErrors.zipcode = t('errors.zipcode.required');
     } else if (isNaN(Number(formData.zipcode))) {
-      newErrors.zipcode = 'Zip code must be a number';
+      newErrors.zipcode = t('errors.zipcode.invalid');
     }
 
     if (!city) {
-      newErrors.zipcode = 'Zip code is invalid';
+      newErrors.zipcode = t('errors.zipcode.required');
     }
 
     setErrors(newErrors);
@@ -126,16 +128,16 @@ export default function SignupPage(): JSX.Element {
       const response = await axios.post(`${apiUrl}/auth/register`, data);
 
       if (response.status === 201) {
-        setSuccess('Your account has been created successfully. Please check your email to verify your account.');
+        setSuccess(t('messages.success'));
       } else {
-        newErrors.general = 'An error occurred. Please try again.';
+        newErrors.general = t('errors.general');
         setErrors(newErrors);
       }
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.data.status === 409) {
-        newErrors.general = 'An account with this email already exists.';
+        newErrors.general = t('errors.accountAlreadyExists');
       } else {
-        newErrors.general = 'An error occurred. Please try again.';
+        newErrors.general = t('errors.general');
       }
       setErrors(newErrors);
     } finally {
@@ -163,14 +165,14 @@ export default function SignupPage(): JSX.Element {
   return (
     <div className="container mx-auto my-20 px-3 md:px-0">
       <div className="max-w-md mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center">Join Financr Today</h1>
+        <h1 className="text-4xl font-bold mb-8 text-center">{t('title')}</h1>
         <p className="font-mono text-xl text-gray-600 mb-12 text-center">
-          Start your journey to smarter investments with our 14-day free trial.
+          {t('subtitle')}
         </p>
 
         <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-8">
           <div className="mb-6">
-            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">{t('labels.email')}</label>
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
@@ -178,7 +180,7 @@ export default function SignupPage(): JSX.Element {
                 id="email"
                 name="email"
                 className={`w-full pl-10 pr-3 py-2 rounded-lg border ${errors.email ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:border-blue-500`}
-                placeholder="you@example.com"
+                placeholder={t('placeholders.email')}
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -187,7 +189,7 @@ export default function SignupPage(): JSX.Element {
             {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
           </div>
           <div className="mb-6">
-            <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+            <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">{t('labels.password')}</label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
@@ -195,7 +197,7 @@ export default function SignupPage(): JSX.Element {
                 id="password"
                 name="password"
                 className={`w-full pl-10 pr-3 py-2 rounded-lg border ${errors.password ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:border-blue-500`}
-                placeholder="••••••••"
+                placeholder={t('placeholders.password')}
                 value={formData.password}
                 onChange={handleChange}
                 required
@@ -205,7 +207,7 @@ export default function SignupPage(): JSX.Element {
           </div>
           <div className="mb-6 flex space-x-4">
             <div className="flex-1">
-              <label htmlFor="firstname" className="block text-gray-700 text-sm font-bold mb-2">First Name</label>
+              <label htmlFor="firstname" className="block text-gray-700 text-sm font-bold mb-2">{t('labels.firstname')}</label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
                 <input
@@ -213,7 +215,7 @@ export default function SignupPage(): JSX.Element {
                   id="firstname"
                   name="firstname"
                   className={`w-full pl-10 pr-3 py-2 rounded-lg border ${errors.firstname ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:border-blue-500`}
-                  placeholder="John"
+                  placeholder={t('placeholders.firstname')}
                   value={formData.firstname}
                   onChange={handleChange}
                   required
@@ -222,7 +224,7 @@ export default function SignupPage(): JSX.Element {
               {errors.firstname && <p className="text-red-500 text-xs mt-1">{errors.firstname}</p>}
             </div>
             <div className="flex-1">
-              <label htmlFor="lastname" className="block text-gray-700 text-sm font-bold mb-2">Last Name</label>
+              <label htmlFor="lastname" className="block text-gray-700 text-sm font-bold mb-2">{t('labels.lastname')}</label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
                 <input
@@ -230,7 +232,7 @@ export default function SignupPage(): JSX.Element {
                   id="lastname"
                   name="lastname"
                   className={`w-full pl-10 pr-3 py-2 rounded-lg border ${errors.lastname ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:border-blue-500`}
-                  placeholder="Doe"
+                  placeholder={t('placeholders.lastname')}
                   value={formData.lastname}
                   onChange={handleChange}
                   required
@@ -240,7 +242,7 @@ export default function SignupPage(): JSX.Element {
             </div>
           </div>
           <div className="mb-6">
-            <label htmlFor="birthdate" className="block text-gray-700 text-sm font-bold mb-2">Date of Birth</label>
+            <label htmlFor="birthdate" className="block text-gray-700 text-sm font-bold mb-2">{t('labels.birthdate')}</label>
             <div className="relative">
               <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
@@ -256,7 +258,7 @@ export default function SignupPage(): JSX.Element {
             {errors.birthdate && <p className="text-red-500 text-xs mt-1">{errors.birthdate}</p>}
           </div>
           <div className="mb-6">
-            <label htmlFor="country" className="block text-gray-700 text-sm font-bold mb-2">Country</label>
+            <label htmlFor="country" className="block text-gray-700 text-sm font-bold mb-2">{t('labels.country')}</label>
             <div className="relative">
               <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <select
@@ -267,7 +269,7 @@ export default function SignupPage(): JSX.Element {
                 onChange={handleChange}
                 required
               >
-                <option value="">Select a country</option>
+                <option value="">{t('placeholders.country')}</option>
                 <option value="US">United States</option>
                 <option value="FR">France</option>
                 {/* Add more countries as needed */}
@@ -276,7 +278,7 @@ export default function SignupPage(): JSX.Element {
             {errors.country && <p className="text-red-500 text-xs mt-1">{errors.country}</p>}
           </div>
           <div className="mb-6">
-            <label htmlFor="zipcode" className="block text-gray-700 text-sm font-bold mb-2">Zip Code</label>
+            <label htmlFor="zipcode" className="block text-gray-700 text-sm font-bold mb-2">{t('labels.zipcode')}</label>
             <div className="relative">
               <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
@@ -284,7 +286,7 @@ export default function SignupPage(): JSX.Element {
                 id="zipcode"
                 name="zipcode"
                 className={`w-full pl-10 pr-3 py-2 rounded-lg border ${errors.zipcode ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:border-blue-500`}
-                placeholder="90210"
+                placeholder={t('placeholders.zipcode')}
                 value={formData.zipcode}
                 onChange={handleChange}
                 required
@@ -294,7 +296,7 @@ export default function SignupPage(): JSX.Element {
           </div>
           {city && (
             <div className="mb-6">
-              <label className="block text-gray-700 text-sm font-bold mb-2">City</label>
+              <label className="block text-gray-700 text-sm font-bold mb-2">{t('labels.city')}</label>
               <input
                 type="text"
                 className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-gray-100"
@@ -307,20 +309,21 @@ export default function SignupPage(): JSX.Element {
           {success && <p className="text-green-500 text-sm my-4">{success}</p>}
           <button
             type="submit"
-            className="w-full flex justify-center items-center bg-black text-white font-bold py-3 px-4 rounded-full hover:bg-gray-800 transition duration-300"
+            className={`w-full flex justify-center items-center bg-black text-white font-bold py-3 px-4 rounded-full hover:bg-gray-800 transition duration-300`}
+            disabled={loading}
           >
             {loading ? (
               <LoaderCircle className="animate-spin w-5 h-5 text-white" />
-            ) : (
-              'Create Account'
-            )}
+            ) : 
+              t('buttons.createAccount')
+            }
           </button>
         </form>
 
         <p className="mt-8 text-center font-mono text-gray-600">
-          Already have an account?{' '}
-          <Link href="/login" className="text-blue-600 hover:text-blue-800 font-semibold">
-            Log in here
+          {t('messages.alreadyHaveAccount')}{' '}
+          <Link href="/auth/login" className="text-blue-600 hover:text-blue-800 font-semibold">
+            {t('buttons.loginHere')}
           </Link>
         </p>
 
@@ -329,7 +332,7 @@ export default function SignupPage(): JSX.Element {
             href="/"
             className="inline-flex items-center text-lg font-semibold text-blue-600 hover:text-blue-800"
           >
-            Back to home <ArrowRight className="ml-2" />
+            {t('messages.backToHome')} <ArrowRight className="ml-2" />
           </Link>
         </div>
       </div>
