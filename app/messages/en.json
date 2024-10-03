@@ -264,5 +264,146 @@
       "createAccount": "Create Account",
       "loginHere": "Log in here"
     }
+  },
+  "caseStudies": {
+    "title": "Inspiring success stories",
+    "description": "Discover how our investment management platform has transformed the financial journeys of our clients. These impactful case studies highlight the real-world benefits and success achieved through our tailored services.",
+    "ourSolutionsTitle": "Solution",
+    "challengeTitle": "Challenge",
+    "ourResultsTitle": "Results",
+    "ourImpactTitle": "Long-term Impact",
+    "studies": {
+      "hedgeFund": {
+        "title": "Hedge Fund Risk Management",
+        "description": "We implemented a risk analysis strategy that resulted in a 30% reduction in portfolio volatility and a 15% increase in annual returns.",
+        "challenge": "A prominent hedge fund was grappling with high portfolio volatility and inconsistent returns, causing significant investor concern and threatening to reduce assets under management.",
+        "solution": [
+          "Deployed our state-of-the-art risk analysis engine, providing real-time insights and predictive alerts",
+          "Implemented AI-driven scenario analysis and stress testing, simulating thousands of market conditions",
+          "Utilized our proprietary portfolio rebalancing algorithm, optimizing asset allocation daily",
+          "Integrated a custom dashboard for fund managers, offering instant access to critical risk metrics"
+        ],
+        "results": [
+          "30% reduction in portfolio volatility",
+          "15% increase in annual returns",
+          "20% growth in assets under management",
+          "Improved investor confidence, leading to easier fundraising"
+        ],
+        "impact": "The hedge fund not only stabilized its performance but also attracted new investors, growing its AUM by 20% in the following year. The fund manager reported increased confidence in decision-making and a more proactive approach to risk management."
+      },
+      "retailInvestor": {
+        "title": "Retail Investor Portfolio Optimization",
+        "description": "Our portfolio optimization tool helped achieve a 25% increase in overall portfolio performance within the first year of use.",
+        "challenge": "A retail investor with a mid-sized portfolio was struggling to balance their investments effectively. They lacked the tools and insights to make informed decisions, resulting in suboptimal returns and missed opportunities.",
+        "solution": [
+          "Implemented a personalized portfolio tracking dashboard with real-time updates and alerts",
+          "Deployed our AI-driven performance optimization engine, providing tailored investment suggestions",
+          "Integrated a curated market insights feed, delivering relevant news and analysis",
+          "Provided access to our proprietary asset allocation tool, ensuring optimal portfolio diversification"
+        ],
+        "results": [
+          "25% increase in overall portfolio performance",
+          "More diversified and balanced portfolio across multiple asset classes",
+          "50% reduction in time spent on portfolio management",
+          "Increased confidence in investment decisions"
+        ],
+        "impact": "The retail investor not only saw significant financial gains but also reported feeling more in control of their financial future. They were able to make more informed decisions quickly, taking advantage of market opportunities they previously would have missed."
+      },
+      "pensionFund": {
+        "title": "Pension Fund Long-Term Growth Strategy",
+        "description": "Our market insights and performance tracking led to a more diversified portfolio, resulting in stable 8% year-over-year growth.",
+        "challenge": "A large pension fund was facing pressure to deliver consistent returns while managing long-term risks for their beneficiaries. They needed a solution that could balance growth with stability over a multi-decade horizon.",
+        "solution": [
+          "Implemented our comprehensive risk analysis suite, providing long-term forecasting and risk assessment",
+          "Deployed our AI-powered performance optimization tool, focusing on steady, long-term growth",
+          "Integrated our advanced market insights platform, offering real-time economic indicator tracking",
+          "Developed a custom reporting system, enhancing stakeholder transparency and communication"
+        ],
+        "results": [
+          "Stable 8% year-over-year growth, outperforming the market average",
+          "30% improvement in long-term risk management metrics",
+          "15% increase in beneficiary satisfaction scores",
+          "Enhanced reporting and transparency for all stakeholders"
+        ],
+        "impact": "The pension fund achieved its goal of stable, long-term growth while significantly improving its risk management. The enhanced transparency and consistent performance led to increased trust from beneficiaries and regulators alike, solidifying the fund's reputation in the industry."
+      }
+    }
+  },
+  "subscriptions": {
+    "title": "Select your path to investment success",
+    "description": "Unlock the true potential of your investments with our tailored subscription plans designed to elevate your financial strategy.",
+    "month": "month",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "price": "$29",
+        "description": "Kickstart your investment journey with essential tools for individuals and small businesses. Enjoy a 14-day free trial to explore all features!",
+        "cta": "Start free trial",
+        "features": {
+          "portfolio_tracking": "Portfolio tracking (up to 3 portfolios)",
+          "basic_risk_analysis": "Basic risk analysis",
+          "market_news": "Market news and insights",
+          "email_support": "Email support",
+          "performance_optimization": "Performance optimization",
+          "ai_predictions": "Advanced AI predictions"
+        }
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "$99",
+        "description": "Designed for ambitious businesses and serious investors ready to scale their success. Start with a 14-day free trial to experience premium features!",
+        "cta": "Upgrade to Pro",
+        "popular": "Le plus populaire",
+        "features": {
+          "unlimited_portfolio": "Unlimited portfolio tracking",
+          "advanced_risk_analysis": "Advanced risk analysis",
+          "ai_optimization": "AI-driven performance optimization",
+          "market_predictions": "Market predictions powered by AI",
+          "priority_support": "24/7 priority support",
+          "custom_api": "Custom API access"
+        }
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "$499",
+        "description": "Comprehensive, tailored solutions for large organizations with complex investment requirements. Get started with a 14-day free trial to discover our full potential.",
+        "cta": "Contact sales",
+        "features": {
+          "all_professional_features": "All features in Professional plan",
+          "custom_api": "Custom API access",
+          "account_manager": "Dedicated account manager",
+          "tailored_ai_models": "Tailored AI models",
+          "multi_user_access": "Multi-user access (up to 10 users)",
+          "compliance_reporting": "Compliance and regulatory reporting"
+        }
+      }
+    },
+    "why_choose_us": {
+      "title": "Why choose Financr?",
+      "features": {
+        "analytics": {
+          "title": "Instant Analytics",
+          "description": "Make swift, informed decisions with our lightning-fast data processing."
+        },
+        "security": {
+          "title": "Top-tier Security",
+          "description": "Your data’s safety is our priority, protected by industry-leading encryption."
+        },
+        "predictions": {
+          "title": "Smart Predictions",
+          "description": "Leverage advanced AI algorithms to stay ahead of market trends and opportunities."
+        }
+      }
+    },
+    "not_sure_yet": {
+      "title": "Not sure yet?",
+      "description": "Explore our success stories and see how Financr has empowered clients just like you to achieve remarkable results.",
+      "cta": "View case studies"
+    },
+    "cta": {
+      "title": "Ready to elevate your investment game?",
+      "description": "Start your 14-day free trial today and witness firsthand how Financr can transform your investment strategy.",
+      "cta": "Start free trial"
+    }
   }
 }

@@ -265,5 +265,146 @@
       "createAccount": "Créer un compte",
       "loginHere": "Connectez-vous ici"
     }
+  },
+  "caseStudies": {
+    "title": "Des histoires de réussite inspirantes",
+    "description": "Découvrez comment notre plateforme de gestion d'investissements a transformé les parcours financiers de nos clients. Ces études de cas percutantes mettent en lumière les avantages réels et le succès obtenus grâce à nos services personnalisés.",
+    "ourSolutionsTitle": "Solution",
+    "challengeTitle": "Challenge",
+    "ourResultsTitle": "Résultats",
+    "ourImpactTitle": "Impact sur le long terme",
+    "studies": {
+      "hedgeFund": {
+        "title": "Gestion des risques d'un fonds spéculatif",
+        "description": "Nous avons mis en œuvre une stratégie d'analyse des risques qui a entraîné une réduction de 30 % de la volatilité du portefeuille et une augmentation de 15 % des rendements annuels.",
+        "challenge": "Un fonds spéculatif de premier plan faisait face à une forte volatilité du portefeuille et à des rendements incohérents, provoquant des inquiétudes chez les investisseurs et menaçant de réduire les actifs sous gestion.",
+        "solution": [
+          "Déploiement de notre moteur d'analyse des risques à la pointe de la technologie, fournissant des informations en temps réel et des alertes prédictives",
+          "Mise en œuvre d'une analyse de scénario basée sur l'IA et de tests de résistance, simulant des milliers de conditions de marché",
+          "Utilisation de notre algorithme de rééquilibrage de portefeuille propriétaire, optimisant l'allocation des actifs quotidiennement",
+          "Intégration d'un tableau de bord personnalisé pour les gestionnaires de fonds, offrant un accès instantané aux indicateurs de risques critiques"
+        ],
+        "results": [
+          "Réduction de 30 % de la volatilité du portefeuille",
+          "Augmentation de 15 % des rendements annuels",
+          "Croissance de 20 % des actifs sous gestion",
+          "Amélioration de la confiance des investisseurs, facilitant la collecte de fonds"
+        ],
+        "impact": "Le fonds spéculatif a non seulement stabilisé sa performance, mais a également attiré de nouveaux investisseurs, augmentant ses actifs sous gestion de 20 % l'année suivante. Le gestionnaire de fonds a rapporté une plus grande confiance dans la prise de décision et une approche plus proactive de la gestion des risques."
+      },
+      "retailInvestor": {
+        "title": "Optimisation de portefeuille pour un investisseur particulier",
+        "description": "Notre outil d'optimisation de portefeuille a permis d'augmenter la performance globale du portefeuille de 25 % au cours de la première année d'utilisation.",
+        "challenge": "Un investisseur particulier avec un portefeuille de taille moyenne avait du mal à équilibrer ses investissements efficacement. Il manquait d'outils et d'informations pour prendre des décisions éclairées, ce qui entraînait des rendements sous-optimaux et des opportunités manquées.",
+        "solution": [
+          "Mise en œuvre d'un tableau de bord personnalisé de suivi de portefeuille avec des mises à jour et alertes en temps réel",
+          "Déploiement de notre moteur d'optimisation de performance basé sur l'IA, fournissant des suggestions d'investissement personnalisées",
+          "Intégration d'un flux d'informations de marché sélectionnées, fournissant des analyses et nouvelles pertinentes",
+          "Accès à notre outil d'allocation d'actifs propriétaire, garantissant une diversification optimale du portefeuille"
+        ],
+        "results": [
+          "Augmentation de 25 % de la performance globale du portefeuille",
+          "Portefeuille plus diversifié et équilibré sur plusieurs classes d'actifs",
+          "Réduction de 50 % du temps consacré à la gestion du portefeuille",
+          "Augmentation de la confiance dans les décisions d'investissement"
+        ],
+        "impact": "L'investisseur particulier a non seulement vu des gains financiers significatifs, mais a également déclaré se sentir plus en contrôle de son avenir financier. Il a pu prendre des décisions plus éclairées rapidement, saisissant des opportunités de marché qu'il aurait autrement manquées."
+      },
+      "pensionFund": {
+        "title": "Stratégie de croissance à long terme pour un fonds de pension",
+        "description": "Nos analyses de marché et notre suivi des performances ont conduit à un portefeuille plus diversifié, entraînant une croissance stable de 8 % d'une année sur l'autre.",
+        "challenge": "Un grand fonds de pension était sous pression pour fournir des rendements constants tout en gérant les risques à long terme pour ses bénéficiaires. Il avait besoin d'une solution pouvant équilibrer croissance et stabilité sur un horizon pluriannuel.",
+        "solution": [
+          "Mise en œuvre de notre suite d'analyse des risques complète, offrant des prévisions et une évaluation des risques à long terme",
+          "Déploiement de notre outil d'optimisation des performances alimenté par l'IA, axé sur une croissance régulière et à long terme",
+          "Intégration de notre plateforme avancée d'informations sur le marché, offrant un suivi en temps réel des indicateurs économiques",
+          "Développement d'un système de reporting personnalisé, améliorant la transparence et la communication avec les parties prenantes"
+        ],
+        "results": [
+          "Croissance stable de 8 % d'une année sur l'autre, surpassant la moyenne du marché",
+          "Amélioration de 30 % des indicateurs de gestion des risques à long terme",
+          "Augmentation de 15 % de la satisfaction des bénéficiaires",
+          "Amélioration du reporting et de la transparence pour toutes les parties prenantes"
+        ],
+        "impact": "Le fonds de pension a atteint son objectif de croissance stable à long terme tout en améliorant considérablement sa gestion des risques. La transparence accrue et les performances constantes ont conduit à une confiance accrue des bénéficiaires et des régulateurs, consolidant la réputation du fonds dans l'industrie."
+      }
+    }
+  },
+  "subscriptions": {
+    "title": "Choisissez votre chemin vers le succès en investissement",
+    "description": "Débloquez le véritable potentiel de vos investissements avec nos plans d'abonnement sur mesure, conçus pour améliorer votre stratégie financière.",
+    "month": "mois",
+    "plans": {
+      "starter": {
+        "name": "Personnel",
+        "price": "29€",
+        "description": "Lancez votre parcours d'investissement avec des outils essentiels pour les particuliers et les petites entreprises. Profitez d'un essai gratuit de 14 jours pour explorer toutes les fonctionnalités !",
+        "cta": "Commencer l’essai gratuit",
+        "features": {
+          "portfolio_tracking": "Suivi de portefeuille (jusqu’à 3 portefeuilles)",
+          "basic_risk_analysis": "Analyse des risques de base",
+          "market_news": "Actualités et analyses de marché",
+          "email_support": "Support par e-mail",
+          "performance_optimization": "Optimisation des performances",
+          "ai_predictions": "Prédictions avancées basées sur IA"
+        }
+      },
+      "professional": {
+        "name": "Professionnel",
+        "price": "99€",
+        "description": "Conçu pour les entreprises ambitieuses et les investisseurs sérieux prêts à développer leur succès. Commencez par un essai gratuit de 14 jours pour découvrir les fonctionnalités premium !",
+        "cta": "Passer à Pro",
+        "popular": "Le plus populaire",
+        "features": {
+          "unlimited_portfolio": "Suivi de portefeuille illimité",
+          "advanced_risk_analysis": "Analyse avancée des risques",
+          "ai_optimization": "Optimisation des performances par IA",
+          "market_predictions": "Prédictions de marché alimentées par IA",
+          "priority_support": "Support prioritaire 24/7",
+          "custom_api": "Accès API personnalisé"
+        }
+      },
+      "enterprise": {
+        "name": "Entreprise",
+        "price": "499€",
+        "description": "Solutions complètes et personnalisées pour les grandes organisations ayant des exigences d'investissement complexes. Commencez avec un essai gratuit de 14 jours pour découvrir tout notre potentiel.",
+        "cta": "Contacter les ventes",
+        "features": {
+          "all_professional_features": "Toutes les fonctionnalités du plan Professionnel",
+          "custom_api": "Accès API personnalisé",
+          "account_manager": "Gestionnaire de compte dédié",
+          "tailored_ai_models": "Modèles IA personnalisés",
+          "multi_user_access": "Accès multi-utilisateurs (jusqu’à 10 utilisateurs)",
+          "compliance_reporting": "Rapports de conformité et de régulation"
+        }
+      }
+    },
+    "why_choose_us": {
+      "title": "Pourquoi choisir Financr ?",
+      "features": {
+        "analytics": {
+          "title": "Analyses instantanées",
+          "description": "Prenez des décisions rapides et éclairées grâce à notre traitement de données ultra-rapide."
+        },
+        "security": {
+          "title": "Sécurité de premier ordre",
+          "description": "La sécurité de vos données est notre priorité, protégée par un chiffrement de pointe."
+        },
+        "predictions": {
+          "title": "Prédictions intelligentes",
+          "description": "Exploitez des algorithmes IA avancés pour rester à l'avant-garde des tendances et des opportunités du marché."
+        }
+      }
+    },
+    "not_sure_yet": {
+      "title": "Pas encore sûr ?",
+      "description": "Découvrez nos études de cas et voyez comment Financr a aidé des clients comme vous à obtenir des résultats remarquables.",
+      "cta": "Voir les études de cas"
+    },
+    "cta": {
+      "title": "Prêt à améliorer votre stratégie d'investissement ?",
+      "description": "Commencez votre essai gratuit de 14 jours dès aujourd'hui et découvrez comment Financr peut transformer votre stratégie d'investissement.",
+      "cta": "Commencer l’essai gratuit"
+    }
   }
 }
