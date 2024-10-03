@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@i18n/routing';
 import { Check, ArrowRight, Zap, Shield, BarChart } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
@@ -120,7 +120,7 @@ const SubscriptionsPage: React.FC = () => {
           {t('cta.description')}
         </p>
         <Link
-          href="/signup"
+          href="/auth/signup"
           className="bg-white text-black font-bold px-8 py-3 rounded-full hover:bg-gray-200 transition duration-300"
         >
           {t('cta.cta')}

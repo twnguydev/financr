@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { Megaphone, Search, MousePointer, Mail, ArrowRight, Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@i18n/routing';
-import { t } from 'i18next';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -161,10 +160,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, isD
       <p className={`font-mono ${isDark ? 'text-gray-300' : 'text-gray-600'} flex-grow mb-4 h-24 overflow-y-auto`}>
         {description}
       </p>
-      <a href="#" className="inline-flex items-center mt-auto font-bold">
+      <Link href="/services" className="inline-flex items-center mt-auto font-bold">
         {t('learnMore')}
         <ArrowRight className="ml-2" size={16} />
-      </a>
+      </Link>
     </div>
   );
 };
@@ -176,10 +175,10 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ title, description }): JS
     <div>
       <h3 className="text-xl font-bold mb-2">{title}</h3>
       <p className="font-mono text-gray-300 mb-4">{description}</p>
-      <a href="#" className="inline-flex items-center font-bold text-white">
+      <Link href="/use-cases" className="inline-flex items-center font-bold text-white">
         {t('learnMore')}
         <ArrowRight className="ml-2" size={16} />
-      </a>
+      </Link>
     </div>
   );
 };
@@ -211,11 +210,11 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({ title, price, featu
         </ul>
       </div>
 
-      <a href="/en/plans"
+      <Link href="/plans"
         className={`w-full py-2 px-4 mt-4 rounded-full font-bold flex items-center justify-center ${isPopular ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'}`}
       >
         {t('learnMore')} <ArrowRight className="ml-2" size={16} />
-      </a>
+      </Link>
     </div>
   );
 };

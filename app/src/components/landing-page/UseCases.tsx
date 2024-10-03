@@ -1,7 +1,6 @@
 import React from 'react';
 import { TrendingUp, ShieldCheck, PieChart, ChevronRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { t } from 'i18next';
 
 interface CaseStudyProps {
   title: string;

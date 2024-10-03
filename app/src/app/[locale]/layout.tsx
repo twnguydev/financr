@@ -1,5 +1,4 @@
 // /app/[lang]/layout.tsx
-
 import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -19,6 +18,9 @@ export async function generateMetadata({params: { locale }}: { params: { locale:
     title: t('title'),
     description: t('description'),
     locale,
+    icons: {
+      icon: '/favicon.ico',
+    },
     keywords: t('keywords'),
     author: t('author'),
     robots: t('robots'),
