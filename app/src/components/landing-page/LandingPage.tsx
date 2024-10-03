@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
 import { Megaphone, Search, MousePointer, Mail, ArrowRight, Check } from 'lucide-react';

@@ -3,5 +3,5 @@
 import LandingPage from '@/components/landing-page/LandingPage';
 
 export default function Home(): JSX.Element {
-  return <div>Simple Home Page</div>;
+  return <LandingPage />;
 }
