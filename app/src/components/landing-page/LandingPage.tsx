@@ -42,7 +42,17 @@ export default function LandingPage(): JSX.Element {
             </button>
           </div>
           <div className="flex justify-center">
-            <Image src="/assets/hero_banner.png" width={500} height={500} alt="Illustration" className="max-w-full h-auto" />
+            <Image
+              src="/assets/hero_banner.png"
+              width={500}
+              height={500}
+              alt="Illustration"
+              className="max-w-full h-auto" 
+              loading="lazy"
+              layout="responsive"
+              quality={75}
+              decoding="async"
+            />
           </div>
         </div>
       </section>
