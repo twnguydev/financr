@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
 import { Bell, ArrowRight, TrendingUp, TrendingDown } from 'lucide-react';
 import Sidebar from '@components/admin/Sidebar';
@@ -16,48 +16,46 @@ interface KPIData {
   color: string;
 }
 
-type KPIAlerts = {
-  [key: string]: KPIData;
-};
-
 const DashboardKPI: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('kpi');
   const { api } = useApi();
   const [kpiData, setKpiData] = useState<KPIData[]>([]);
-  const [trendData, setTrendData] = useState([]);
+  const [trendData, setTrendData] = useState<any[]>([]); // Consider creating a proper type for this
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string>('');
+  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchKPIData();
-    fetchTrendData();
-  }, []);
-
-  const fetchKPIData = async (): Promise<void> => {
+  const fetchKPIData = useCallback(async (): Promise<void> => {
     try {
-      setLoading(true);
       const response = await api.get('/admin/kpi');
       setKpiData(response.data);
-      setLoading(false);
     } catch (err) {
       setError('Erreur lors du chargement des KPI');
-      setLoading(false);
     }
-  };
+  }, [api]);
 
-  const fetchTrendData = async (): Promise<void> => {
+  const fetchTrendData = useCallback(async (): Promise<void> => {
     try {
       const response = await api.get('/admin/kpi/trends');
       setTrendData(response.data);
     } catch (err) {
       setError('Erreur lors du chargement des tendances');
     }
-  };
+  }, [api]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      await Promise.all([fetchKPIData(), fetchTrendData()]);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, [fetchKPIData, fetchTrendData]);
 
   const handleAlertChange = async (id: string, limit: string) => {
     try {
       await api.put(`/admin/kpi/${id}/limit`, { limit });
-      fetchKPIData();
+      await fetchKPIData();
     } catch (err) {
       setError('Erreur lors de la mise à jour de la limite');
     }
@@ -66,12 +64,12 @@ const DashboardKPI: React.FC = () => {
   const TrendIndicator: React.FC<{ value: number }> = ({ value }) => (
     <span className={`flex items-center gap-1 font-bold ${value >= 0 ? 'text-green-500' : 'text-red-500'}`}>
       {value >= 0 ? <TrendingUp size={16} /> : <TrendingDown size={16} />}
-      {Math.abs(value)}%
+      {Math.abs(value).toFixed(2)}%
     </span>
   );
 
-  if (loading) return <div>Chargement...</div>;
-  if (error) return <div>{error}</div>;
+  if (loading) return <div className="flex justify-center items-center h-screen">Chargement...</div>;
+  if (error) return <div className="bg-red-500 text-white p-4 rounded-lg m-8">{error}</div>;
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -84,13 +82,13 @@ const DashboardKPI: React.FC = () => {
           {kpiData.map((kpi) => (
             <div key={kpi.id} className="bg-white p-6 rounded-lg shadow-lg">
               <h3 className="text-xl font-bold mb-2">{kpi.name}</h3>
-              <p className="text-3xl font-bold mb-2">{kpi.value}</p>
+              <p className="text-3xl font-bold mb-2">{kpi.value.toLocaleString()}</p>
               <TrendIndicator value={kpi.trend} />
               <div className="h-2 bg-gray-200 rounded-full mt-4 overflow-hidden">
                 <div
                   className={`h-full rounded-full ${kpi.value > kpi.limit ? 'bg-red-500' : 'bg-blue-500'}`}
                   style={{ width: `${Math.min((kpi.value / kpi.limit) * 100, 100)}%` }}
-                ></div>
+                />
               </div>
               <p className="text-sm text-justify text-gray-600 mt-4">{kpi.description_fr}</p>
             </div>
@@ -146,7 +144,7 @@ const DashboardKPI: React.FC = () => {
                 </div>
               </div>
             ))}
-            <div className="col-span-full flex items-center justify-end">
+            <div className="col-span-full flex items-center justify-end mt-4">
               <button
                 type="submit"
                 className="flex items-center bg-black text-white font-bold py-3 px-4 rounded-full hover:bg-gray-800 transition duration-300"
