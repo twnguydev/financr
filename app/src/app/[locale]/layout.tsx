@@ -3,7 +3,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { ReactNode } from "react";
-import "./globals.css";
+import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { routing } from '@i18n/routing';

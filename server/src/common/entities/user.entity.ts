@@ -46,12 +46,15 @@ export class User {
   @Column({ type: 'timestamp', nullable: true })
   verificationTokenExpiry?: Date;
 
+  @Column({ type: 'enum', enum: ['user', 'admin'], default: 'user' })
+  role: 'user' | 'admin';
+
   @Column({ type: 'boolean', default: false })
   isActive: boolean;
 
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', readonly: true })
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
 }
