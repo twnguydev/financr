@@ -5,6 +5,7 @@
 @font-face {
   font-family: 'Cursor';
   src: url('/fonts/Cursor_Font.woff2') format('woff2');
+  font-display: swap;
   font-weight: normal;
   font-style: normal;
 }
@@ -12,6 +13,7 @@
 @font-face {
   font-family: 'GeistMonoVF';
   src: url('/fonts/GeistMonoVF.woff') format('woff');
+  font-display: swap;
   font-weight: normal;
   font-style: normal;
 }
@@ -19,6 +21,7 @@
 @font-face {
   font-family: 'GeistVF';
   src: url('/fonts/GeistVF.woff') format('woff');
+  font-display: swap;
   font-weight: normal;
   font-style: normal;
 }

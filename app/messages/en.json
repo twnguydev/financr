@@ -8,6 +8,7 @@
   },
   "navbar": {
     "home": "Financr",
+    "toggleMenu": "Toggle menu",
     "requestQuote": "Start now",
     "aboutUs": "About us",
     "services": "Services",
@@ -47,7 +48,7 @@
     "heroTitle": "Navigating the financial landscape for success",
     "heroDescription": "Our investment management platform helps businesses grow and succeed through a range of services including portfolio tracking, risk analysis, and performance optimization.",
     "heroButton": "Get started",
-    "learnMore": "Learn more",
+    "learnMore": "Learn more about it",
     "whatWeOfferTitle": "What we offer",
     "whatWeOfferDescription": "Our investment platform offers a range of services to help businesses grow and succeed financially. These services include :",
     "portfolioTracking": {

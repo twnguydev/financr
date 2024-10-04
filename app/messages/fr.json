@@ -9,6 +9,7 @@
   },
   "navbar": {
     "home": "Financr",
+    "toggleMenu": "Menu",
     "requestQuote": "Démarrer",
     "aboutUs": "À propos",
     "services": "Services",

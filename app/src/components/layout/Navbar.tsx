@@ -73,7 +73,8 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <button className="md:hidden text-gray-600 hover:text-gray-800 transition-colors" onClick={toggleMenu}>
+        <button className="flex items-center justify-center gap-3 md:hidden text-gray-600 hover:text-gray-800 transition-colors" onClick={toggleMenu}>
+          <span className="sr-only">{t('toggleMenu')}</span>
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
