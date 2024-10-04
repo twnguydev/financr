@@ -8,6 +8,7 @@ import { BillingModule } from '@modules/billing/billing.module';
 import { AuthModule } from '@modules/auth/auth.module';
 import { HomeModule } from '@modules/home/home.module';
 import { EmailModule } from '@modules/email/email.module';
+import { KPIModule } from '@modules/admin/kpi/kpi.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { EmailModule } from '@modules/email/email.module';
     AuthModule,
     HomeModule,
     EmailModule,
+    KPIModule,
   ],
 })
 export class AppModule {}
