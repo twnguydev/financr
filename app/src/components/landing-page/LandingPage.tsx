@@ -48,10 +48,6 @@ export default function LandingPage(): JSX.Element {
               height={500}
               alt="Illustration"
               className="max-w-full h-auto" 
-              loading="lazy"
-              layout="responsive"
-              quality={75}
-              decoding="async"
             />
           </div>
         </div>
