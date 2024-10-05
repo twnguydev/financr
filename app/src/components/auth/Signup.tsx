@@ -6,6 +6,7 @@ import axios from 'axios';
 import { ArrowRight, Mail, Lock, User, Calendar, MapPin, LoaderCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 const apiUrl: string | undefined = process.env.NEXT_PUBLIC_FINANCR_API_URL;
 
@@ -43,17 +44,23 @@ export default function SignupPage(): JSX.Element {
   const [success, setSuccess] = useState<string>('');
   const [city, setCity] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
+  const [tenant, setTenant] = useState<string | null>(null);
+  const [tenantRole, setTenantRole] = useState<string | null>(null);
+  const router = useRouter();
 
   const pathname = usePathname();
   const currentLang = pathname.split('/')[1];
 
-  // const params = new URLSearchParams(window.location.search);
-  // const tenant: string | null = params.get('tenant');
-  // const tenant_role: string | null = params.get('tenant_role');
-
   const t = useTranslations('signup');
 
-  const validateForm = () => {
+  useEffect((): void => {
+    if (router.isReady) {
+      setTenant(router.query.tenant as string || null);
+      setTenantRole(router.query.tenant_role as string || null);
+    }
+  }, [router.isReady, router.query]);
+
+  const validateForm = (): boolean => {
     setErrors({});
     setSuccess('');
 
@@ -150,10 +157,10 @@ export default function SignupPage(): JSX.Element {
       language: currentLang,
     };
 
-    // if (tenant) {
-    //   data.tenantId = tenant;
-    //   data.tenantRole = tenant_role;
-    // }
+    if (tenant) {
+      data.tenantId = tenant;
+      data.tenantRole = tenantRole;
+    }
 
     try {
       setLoading(true);
@@ -179,17 +186,17 @@ export default function SignupPage(): JSX.Element {
     }
   };
 
-  useEffect(() => {
-    const fetchCity = async () => {
+  useEffect((): void => {
+    const fetchCity = async (): Promise<void> => {
       if (formData.zipcode.length >= 5 && formData.country) {
-        const fetchedCity = await fetchCityFromZipcode(formData.zipcode, formData.country);
+        const fetchedCity: string = await fetchCityFromZipcode(formData.zipcode, formData.country);
         setCity(fetchedCity);
       }
     };
     fetchCity();
   }, [formData.zipcode, formData.country]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     if (validateForm()) {
       sendRequest();
