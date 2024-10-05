@@ -47,13 +47,16 @@ export default function SignupPage(): JSX.Element {
   const pathname = usePathname();
   const currentLang = pathname.split('/')[1];
 
-  const params = new URLSearchParams(window.location.search);
-  const tenant: string | null = params.get('tenant');
-  const tenant_role: string | null = params.get('tenant_role');
+  // const params = new URLSearchParams(window.location.search);
+  // const tenant: string | null = params.get('tenant');
+  // const tenant_role: string | null = params.get('tenant_role');
 
   const t = useTranslations('signup');
 
   const validateForm = () => {
+    setErrors({});
+    setSuccess('');
+
     const newErrors: FormErrors = {};
 
     if (!formData.email) {
@@ -147,12 +150,10 @@ export default function SignupPage(): JSX.Element {
       language: currentLang,
     };
 
-    if (tenant) {
-      data.tenantId = tenant;
-      data.tenantRole = tenant_role;
-    }
-
-    console.log(data);
+    // if (tenant) {
+    //   data.tenantId = tenant;
+    //   data.tenantRole = tenant_role;
+    // }
 
     try {
       setLoading(true);
