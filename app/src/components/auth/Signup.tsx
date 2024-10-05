@@ -5,7 +5,7 @@ import { Link } from '@i18n/routing';
 import axios from 'axios';
 import { ArrowRight, Mail, Lock, User, Calendar, MapPin, LoaderCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { usePathname, useParams, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 const apiUrl: string | undefined = process.env.NEXT_PUBLIC_FINANCR_API_URL;
 
@@ -30,6 +30,7 @@ interface FormErrors {
 }
 
 export default function SignupPage(): JSX.Element {
+  const t = useTranslations('signup');
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -44,24 +45,26 @@ export default function SignupPage(): JSX.Element {
   const [city, setCity] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [tenant, setTenant] = useState<string | null>(null);
-  const [tenantRole, setTenantRole] = useState<string | null>(null);
+  const [tenant_role, setTenantRole] = useState<string | null>(null);
 
-  const params = useParams();
-  const searchParams = useSearchParams();
-  const pathname: string = usePathname();
-  const currentLang: string = pathname.split('/')[1];
-
-  const t = useTranslations('signup');
+  const pathname = usePathname();
+  const currentLang = pathname.split('/')[1];
 
   useEffect((): void => {
-    setTenant(searchParams.get('tenant'));
-    setTenantRole(searchParams.get('tenant_role'));
-  }, [searchParams]);
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const tenantFromUrl: string | null = params.get('tenant');
+      const tenantRoleFromUrl: string | null = params.get('tenant_role');
+      
+      setTenant(tenantFromUrl);
+      setTenantRole(tenantRoleFromUrl);
+    }
+  }, []);
 
   const validateForm = (): boolean => {
     setErrors({});
     setSuccess('');
-
+    
     const newErrors: FormErrors = {};
 
     if (!formData.email) {
@@ -157,7 +160,7 @@ export default function SignupPage(): JSX.Element {
 
     if (tenant) {
       data.tenantId = tenant;
-      data.tenantRole = tenantRole;
+      data.tenantRole = tenant_role;
     }
 
     try {
@@ -184,10 +187,10 @@ export default function SignupPage(): JSX.Element {
     }
   };
 
-  useEffect((): void => {
+  useEffect(() => {
     const fetchCity = async (): Promise<void> => {
       if (formData.zipcode.length >= 5 && formData.country) {
-        const fetchedCity: string = await fetchCityFromZipcode(formData.zipcode, formData.country);
+        const fetchedCity = await fetchCityFromZipcode(formData.zipcode, formData.country);
         setCity(fetchedCity);
       }
     };
