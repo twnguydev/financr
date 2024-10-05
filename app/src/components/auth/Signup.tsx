@@ -5,8 +5,7 @@ import { Link } from '@i18n/routing';
 import axios from 'axios';
 import { ArrowRight, Mail, Lock, User, Calendar, MapPin, LoaderCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { usePathname } from 'next/navigation';
-import { useRouter } from 'next/router';
+import { usePathname, useParams, useSearchParams } from 'next/navigation';
 
 const apiUrl: string | undefined = process.env.NEXT_PUBLIC_FINANCR_API_URL;
 
@@ -46,19 +45,18 @@ export default function SignupPage(): JSX.Element {
   const [loading, setLoading] = useState<boolean>(false);
   const [tenant, setTenant] = useState<string | null>(null);
   const [tenantRole, setTenantRole] = useState<string | null>(null);
-  const router = useRouter();
 
-  const pathname = usePathname();
-  const currentLang = pathname.split('/')[1];
+  const params = useParams();
+  const searchParams = useSearchParams();
+  const pathname: string = usePathname();
+  const currentLang: string = pathname.split('/')[1];
 
   const t = useTranslations('signup');
 
   useEffect((): void => {
-    if (router.isReady) {
-      setTenant(router.query.tenant as string || null);
-      setTenantRole(router.query.tenant_role as string || null);
-    }
-  }, [router.isReady, router.query]);
+    setTenant(searchParams.get('tenant'));
+    setTenantRole(searchParams.get('tenant_role'));
+  }, [searchParams]);
 
   const validateForm = (): boolean => {
     setErrors({});
