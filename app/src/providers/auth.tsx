@@ -2,9 +2,9 @@
 
 import React, { createContext, Context, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { AuthContextType } from '@types/auth';
-import { User, PlatformRoleEnum } from '@types/user';
-import { Tenant } from '@types/tenant';
+import { AuthContextType } from '@/types/auth';
+import { User, PlatformRoleEnum } from '@/types/user';
+import { Tenant } from '@/types/tenant';
 
 const AuthContext: Context<AuthContextType | null> = createContext<AuthContextType | null>(null);
 

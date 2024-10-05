@@ -1,4 +1,4 @@
-import { Tenant } from '@types/tenant';
+import { Tenant } from '@/types/tenant';
 
 export interface Billing {
   id: string;

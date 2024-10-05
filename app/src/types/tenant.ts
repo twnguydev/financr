@@ -1,5 +1,5 @@
-import { SubscriptionEnum } from '@types/billing';
-import { User } from '@types/user';
+import { SubscriptionEnum } from '@/types/billing';
+import { User } from '@/types/user';
 
 export interface Tenant {
   id: string;

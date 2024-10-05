@@ -1,5 +1,5 @@
-import { User } from '@types/user';
-import { Tenant } from '@types/tenant';
+import { User } from '@/types/user';
+import { Tenant } from '@/types/tenant';
 
 export interface AuthContextType {
     user: User | null;

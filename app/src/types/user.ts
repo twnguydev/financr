@@ -1,4 +1,4 @@
-import { TenantRole } from '@types/tenant';
+import { TenantRole } from '@/types/tenant';
 
 export interface User {
   id: string;
