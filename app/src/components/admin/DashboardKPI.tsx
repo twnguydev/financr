@@ -20,7 +20,7 @@ const DashboardKPI: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('kpi');
   const { api } = useApi();
   const [kpiData, setKpiData] = useState<KPIData[]>([]);
-  const [trendData, setTrendData] = useState<any[]>([]); // Consider creating a proper type for this
+  const [trendData, setTrendData] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -68,16 +68,17 @@ const DashboardKPI: React.FC = () => {
     </span>
   );
 
-  if (loading) return <div className="flex justify-center items-center h-screen">Chargement...</div>;
-  if (error) return <div className="bg-red-500 text-white p-4 rounded-lg m-8">{error}</div>;
+  const renderContent = () => {
+    if (loading) {
+      return <div className="flex justify-center items-center h-full">Chargement...</div>;
+    }
 
-  return (
-    <div className="flex h-screen bg-gray-100">
-      <Sidebar tab={activeTab} setTab={setActiveTab} />
+    if (error) {
+      return <div className="bg-red-500 text-white p-4 rounded-lg m-8">{error}</div>;
+    }
 
-      <div className="flex-1 p-8 overflow-y-auto">
-        <h1 className="text-4xl font-bold mb-8">Tableau de bord KPI</h1>
-
+    return (
+      <>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {kpiData.map((kpi) => (
             <div key={kpi.id} className="bg-white p-6 rounded-lg shadow-lg">
@@ -155,6 +156,17 @@ const DashboardKPI: React.FC = () => {
             </div>
           </form>
         </div>
+      </>
+    );
+  };
+
+  return (
+    <div className="flex h-screen bg-gray-100">
+      <Sidebar tab={activeTab} setTab={setActiveTab} />
+
+      <div className="flex-1 p-8 overflow-y-auto">
+        <h1 className="text-4xl font-bold mb-8">Tableau de bord KPI</h1>
+        {renderContent()}
       </div>
     </div>
   );

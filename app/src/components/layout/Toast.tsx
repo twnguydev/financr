@@ -9,6 +9,12 @@ interface ToastProps {
   onClose: () => void;
 }
 
+export interface ToastMessage {
+  title: string;
+  message: string;
+  type: 'success' | 'error' | 'warning' | 'info';
+}
+
 const Toast: React.FC<ToastProps> = ({ title, message, type, duration = 3000, onClose }): JSX.Element => {
   const [progress, setProgress] = useState(100);
 

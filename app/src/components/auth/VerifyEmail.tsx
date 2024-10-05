@@ -1,94 +1,97 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
 import { LoaderCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import Toast from '@components/layout/Toast';
-
-const apiUrl: string | undefined = process.env.NEXT_PUBLIC_FINANCR_API_URL;
+import { useTranslations } from 'next-intl';
+import { useApi } from '@hooks/api';
+import { usePathname } from 'next/navigation';
+import Toast, { ToastMessage } from '@components/layout/Toast';
 
 export default function VerifyEmailPage(): JSX.Element {
   const [showToast, setShowToast] = useState(false);
   const requestSentRef = useRef(false);
+  const { api } = useApi();
+  const pathname: string = usePathname();
+  const lang: string = pathname.split('/')[1];
+  const router = useRouter();
+  const [message, setMessage] = useState('');
 
-  interface ToastMessage {
-    title: string;
-    message: string;
-    type: 'success' | 'error' | 'warning' | 'info';
-  }
+  const t = useTranslations('verify-email');
   
   const [toastMessage, setToastMessage] = useState<ToastMessage>({
     title: '',
     message: '',
     type: 'error',
   });
-  const router = useRouter();
 
   useEffect(() => {
     const verifyEmail = async (): Promise<void> => {
       if (requestSentRef.current) return;
       requestSentRef.current = true;
 
+      setMessage(t('verifying'));
+
       const params = new URLSearchParams(window.location.search);
       const token: string | null = params.get('token');
 
       if (!token) {
         setToastMessage({
-          title: 'Error',
-          message: 'No token provided.',
+          title: t('error-title'),
+          message: t('error-no-token'),
           type: 'error',
         });
         setShowToast(true);
         setTimeout(() => {
-          router.push('/fr');
+          router.push(`/${lang}`);
         }, 10000);
         return;
       }
 
       try {
-        console.log('Sending request to verify email...');
-        const response = await axios.get(`${apiUrl}/auth/verify-email?token=${token}`);
+        const response = await api.get(`/auth/verify-email?token=${token}`);
 
-        console.log('Response received:', response);
         if (response.status === 200) {
-          console.log('Email verification success');
+          setMessage(t('setting-up'));
+
           setToastMessage({
-            title: 'Success',
-            message: 'Your email has been verified successfully!',
+            title: t('success-title'),
+            message: t('success-message'),
             type: 'success',
           });
           setShowToast(true);
 
           setTimeout(() => {
-            router.push('/fr/auth/login');
+            router.push(`/${lang}/auth/login`);
           }, 10000);
         } else {
-          throw new Error('Verification failed with status: ' + response.status);
+          throw new Error(t('error-verification-failed'));
         }
       } catch (error) {
-        console.error('Error during email verification:', error);
         setToastMessage({
-          title: 'Error',
-          message: error instanceof Error ? error.message : 'Error verifying email.',
+          title: t('error-title'),
+          message: error instanceof Error ? error.message : t('error-verification-failed'),
           type: 'error',
         });
         setShowToast(true);
 
         setTimeout(() => {
-          router.push('/fr');
+          router.push(`/${lang}`);
         }, 10000);
       }
     };
 
     verifyEmail();
-  }, [router]);
+  }, [router, t, api]);
 
   return (
     <div className="container flex items-center justify-center mx-auto h-screen px-3 md:px-0">
       <div className="max-w-md mx-auto text-center">
         <LoaderCircle className="animate-spin mx-auto" size={48} />
-        <h1 className="text-xl font-bold mb-8 mt-3">We are currently verifying your email...</h1>
+        <h1 className="text-xl font-bold mb-8 mt-3">{message}</h1>
+        <p className="text-gray-600">
+          {t('redirect-message')}
+        </p>
       </div>
 
       {showToast && (
@@ -96,7 +99,7 @@ export default function VerifyEmailPage(): JSX.Element {
           title={toastMessage.title}
           message={toastMessage.message}
           type={toastMessage.type}
-          duration={10000}
+          duration={5000}
           onClose={() => setShowToast(false)}
         />
       )}

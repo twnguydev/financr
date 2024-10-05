@@ -1,7 +1,9 @@
+"use client";
+
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram, Phone, Mail } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@i18n/routing';
+import Link from 'next/link';
 
 export default function Footer(): JSX.Element {
   const t = useTranslations('footer');
@@ -12,6 +14,15 @@ export default function Footer(): JSX.Element {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
             <div className="font-bold text-3xl">Financr</div>
+            <div className="mt-4">
+              <Link
+                href="/sitemap-0.xml"
+                locale={false}
+                className="text-gray-400 hover:text-white"
+              >
+                {t('sitemap')}
+              </Link>
+            </div>
             {/* Social Media Section */}
             <div className="mt-16">
               <h3 className="text-xl font-semibold text-white mb-4">{t('findUs')}</h3>

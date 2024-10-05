@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, CreateDateColumn, UpdateDateColumn, BeforeInsert } from 'typeorm';
 import { TenantRole } from '@entities/tenant.role.entity';
 import { SubscriptionType } from '@enums/subscription-type.enum';
 
@@ -22,9 +22,24 @@ export class Tenant {
   @Column({ type: 'json', nullable: true })
   billingInformations: { address: string, city: string, zipcode: string, country: string, cardDetails: string };
 
+  @Column({ type: 'boolean', default: true })
+  isActive: boolean;
+
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', readonly: true })
   createdAt: Date;
 
   @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
+
+  @Column({ type: 'timestamp', nullable: true })
+  freeTrialEndsAt: Date;
+
+  @BeforeInsert()
+  setFreeTrialEndDate() {
+    if (!this.freeTrialEndsAt) {
+      const date = new Date();
+      date.setDate(date.getDate() + 14);
+      this.freeTrialEndsAt = date;
+    }
+  }
 }

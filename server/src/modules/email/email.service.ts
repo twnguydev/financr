@@ -30,8 +30,8 @@ export class EmailService {
     this.emailTemplate = Handlebars.compile(templateSource);
   }
 
-  async sendVerificationEmail(email: string, firstName: string, token: string): Promise<void> {
-    const verificationLink = `${process.env.FRONTEND_URL}/fr/auth/verify?token=${token}`;
+  async sendVerificationEmail(email: string, firstName: string, token: string, language: string): Promise<void> {
+    const verificationLink = `${process.env.FRONTEND_URL}/${language}/auth/verify?token=${token}`;
     
     const htmlContent = this.emailTemplate({
       firstName,

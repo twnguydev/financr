@@ -5,6 +5,7 @@ import { Link } from '@i18n/routing';
 import axios from 'axios';
 import { ArrowRight, Mail, Lock, User, Calendar, MapPin, LoaderCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
 
 const apiUrl: string | undefined = process.env.NEXT_PUBLIC_FINANCR_API_URL;
 
@@ -42,6 +43,13 @@ export default function SignupPage(): JSX.Element {
   const [success, setSuccess] = useState<string>('');
   const [city, setCity] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
+
+  const pathname = usePathname();
+  const currentLang = pathname.split('/')[1];
+
+  const params = new URLSearchParams(window.location.search);
+  const tenant: string | null = params.get('tenant');
+  const tenant_role: string | null = params.get('tenant_role');
 
   const t = useTranslations('signup');
 
@@ -109,7 +117,22 @@ export default function SignupPage(): JSX.Element {
   const sendRequest = async (): Promise<void> => {
     const newErrors: FormErrors = {};
 
-    const data = {
+    let data: {
+      firstname: string;
+      lastname: string;
+      birthdate: string;
+      password: string;
+      email: string;
+      address: {
+        address: string;
+        zipcode: string;
+        city: string;
+        country: string;
+      };
+      language: string;
+      tenantId?: string | null;
+      tenantRole?: string | null;
+    } = {
       firstname: formData.firstname,
       lastname: formData.lastname,
       birthdate: formData.birthdate,
@@ -121,7 +144,15 @@ export default function SignupPage(): JSX.Element {
         city,
         country: formData.country,
       },
+      language: currentLang,
+    };
+
+    if (tenant) {
+      data.tenantId = tenant;
+      data.tenantRole = tenant_role;
     }
+
+    console.log(data);
 
     try {
       setLoading(true);
@@ -136,6 +167,8 @@ export default function SignupPage(): JSX.Element {
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.data.status === 409) {
         newErrors.general = t('errors.accountAlreadyExists');
+      } else if (axios.isAxiosError(error) && error.response?.data.status === 404) {
+        newErrors.general = t('errors.tenantNotFound');
       } else {
         newErrors.general = t('errors.general');
       }

@@ -23,6 +23,7 @@
   },
   "footer": {
     "getInTouch": "Contactez-nous",
+    "sitemap": "Plan du site",
     "phone": "(123) 456-7890",
     "email": "contact@financr.com",
     "address": "123 Avenue Financière, Suite 100",
@@ -200,6 +201,13 @@
     "emailPlaceholder": "john.doe@example.fr",
     "passwordLabel": "Mot de passe",
     "passwordPlaceholder": "••••••••",
+    "messages": {
+      "success": "Connexion réussie. Redirection en cours..."
+    },
+    "errors": {
+      "general": "Une erreur s'est produite. Veuillez réessayer.",
+      "invalidCredentials": "Les informations d'identification fournies sont incorrectes ou le compte n'a pas été activé."
+    },
     "loginButton": "Connexion",
     "forgotPassword": "Mot de passe oublié ?",
     "noAccount": "Vous n'avez pas de compte ?",
@@ -254,7 +262,8 @@
         "invalid": "Le code postal doit être un nombre"
       },
       "general": "Une erreur s'est produite. Veuillez réessayer.",
-      "accountAlreadyExists": "Un compte avec cette adresse e-mail existe déjà."
+      "accountAlreadyExists": "Un compte avec cette adresse e-mail existe déjà.",
+      "tenantNotFound": "L'organisation n'a pas été trouvée. Contactez votre administrateur pour obtenir de l'aide."
     },
     "messages": {
       "success": "Votre compte a été créé avec succès. Veuillez vérifier votre e-mail pour confirmer votre compte.",
@@ -266,6 +275,16 @@
       "createAccount": "Créer un compte",
       "loginHere": "Connectez-vous ici"
     }
+  },
+  "verify-email": {
+    "verifying": "Nous sommes en train de vérifier votre email...",
+    "setting-up": "Nous configurons maintenant votre compte Financr...",
+    "success-title": "Succès",
+    "success-message": "Votre email a été vérifié avec succès !",
+    "error-title": "Erreur",
+    "error-no-token": "Aucun jeton fourni.",
+    "error-verification-failed": "Erreur lors de la vérification de l'email.",
+    "redirect-message": "Vous serez redirigé dans quelques secondes..."
   },
   "caseStudies": {
     "title": "Des histoires de réussite inspirantes",

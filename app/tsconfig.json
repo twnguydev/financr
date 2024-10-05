@@ -25,6 +25,8 @@
       "@styles/*": ["./src/styles/*"],
       "@locales/*": ["./src/locales/*"],
       "@i18n/*": ["./src/i18n/*"],
+      "@types/*": ["./src/types/*"],
+      "@providers/*": ["./src/providers/*"],
     },
   },
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],

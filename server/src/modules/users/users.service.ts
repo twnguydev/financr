@@ -33,6 +33,16 @@ export class UsersService {
     });
   }
 
+  async resetPassword(email: string, newPassword: string): Promise<void> {
+    const user = await this.findByEmail(email);
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    const hashedPassword: string = await bcrypt.hash(newPassword, 10);
+    await this.update(user.id, { password: hashedPassword });
+  }
+
   async create(
     email: string,
     password: string,

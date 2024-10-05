@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://financr-flame.vercel.app
+
+# Sitemaps
+Sitemap: https://financr-flame.vercel.app/sitemap.xml

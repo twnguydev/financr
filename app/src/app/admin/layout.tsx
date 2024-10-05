@@ -2,6 +2,7 @@
 import { ReactNode } from "react";
 import "../globals.css";
 import { routing } from '@i18n/routing';
+import { AuthProvider } from '@providers/auth';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -29,7 +30,9 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className="min-h-screen antialiased font-sans">
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

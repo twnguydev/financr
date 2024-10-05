@@ -1,19 +1,56 @@
 "use client";
 
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useApi } from '@hooks/api';
+import { useRouter } from 'next/navigation';
 import { Link } from '@i18n/routing';
-import { ArrowRight, Mail, Lock } from 'lucide-react';
+import { useAuth } from '@providers/auth';
+import { ArrowRight, Mail, Lock, LoaderCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 export default function LoginPage(): JSX.Element {
   const t = useTranslations('login');
+  const { login } = useAuth();
+  const { api } = useApi();
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState<string>('');
+  const [success, setSuccess] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Login submitted', { email, password });
+
+    let newError;
+
+    try {
+      setLoading(true);
+      const response = await api.post('/auth/login', { email, password });
+      console.log('Réponse de connexion:', response);
+
+      if (response.status === 201) {
+        setSuccess(t('messages.success'));
+        await login(response.data.user, response.data.access_token);
+
+        setTimeout(() => {
+          router.push('/');
+        }, 3000);
+      } else {
+        newError = t('errors.general');
+        setError(newError);
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.data.status === 401) {
+        newError = t('errors.invalidCredentials');
+      } else {
+        newError = t('errors.general');
+      }
+      setError(newError);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -55,11 +92,18 @@ export default function LoginPage(): JSX.Element {
               />
             </div>
           </div>
+          {error && <p className="text-red-500 text-sm my-4">{error}</p>}
+          {success && <p className="text-green-500 text-sm my-4">{success}</p>}
           <button
             type="submit"
-            className="w-full bg-black text-white font-bold py-3 px-4 rounded-full hover:bg-gray-800 transition duration-300"
+            className="w-full flex items-center justify-center bg-black text-white font-bold py-3 px-4 rounded-full hover:bg-gray-800 transition duration-300"
+            disabled={loading}
           >
-            {t('loginButton')}
+            {loading ? (
+              <LoaderCircle className="animate-spin w-5 h-5 text-white" />
+            ) : 
+              t('loginButton')
+            }
           </button>
         </form>
 

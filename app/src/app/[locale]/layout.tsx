@@ -3,18 +3,19 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { ReactNode } from "react";
+import { AuthProvider } from '@providers/auth';
 import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { routing } from '@i18n/routing';
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({locale}));
+  return routing.locales.map((locale) => ({ locale }));
 }
- 
-export async function generateMetadata({params: { locale }}: { params: { locale: string } }) {
-  const t = await getTranslations({locale, namespace: 'metadata'});
- 
+
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+  const t = await getTranslations({ locale, namespace: 'metadata' });
+
   return {
     title: t('title'),
     description: t('description'),
@@ -47,11 +48,13 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className="min-h-screen antialiased font-sans">
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Navbar />
-          {children}
-          <Footer />
-        </NextIntlClientProvider>
+        <AuthProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <Navbar />
+            {children}
+            <Footer />
+          </NextIntlClientProvider>
+        </AuthProvider>
       </body>
     </html>
   );

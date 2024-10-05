@@ -21,6 +21,7 @@
     }
   },
   "footer": {
+    "sitemap": "Sitemap",
     "getInTouch": "Get in touch",
     "phone": "(123) 456-7890",
     "email": "contact@financr.com",
@@ -199,6 +200,13 @@
     "emailPlaceholder": "john.doe@example.com",
     "passwordLabel": "Password",
     "passwordPlaceholder": "••••••••",
+    "messages": {
+      "success": "You have successfully logged in."
+    },
+    "errors": {
+      "general": "An error occurred. Please try again.",
+      "invalidCredentials": "Invalid credentials or your account may not be activated."
+    },
     "loginButton": "Log In",
     "forgotPassword": "Forgot your password?",
     "noAccount": "Don't have an account?",
@@ -253,7 +261,8 @@
         "invalid": "Zip code must be a number"
       },
       "general": "An error occurred. Please try again.",
-      "accountAlreadyExists": "An account with this email already exists."
+      "accountAlreadyExists": "An account with this email already exists.",
+      "tenantNotFound": "The organization you are trying to sign up for does not exist. Please contact your organization administrator."
     },
     "messages": {
       "success": "Your account has been created successfully. Please check your email to verify your account.",
@@ -265,6 +274,16 @@
       "createAccount": "Create Account",
       "loginHere": "Log in here"
     }
+  },
+  "verify-email": {
+    "verifying": "We are currently verifying your email...",
+    "setting-up": "We are now setting up your Financr account...",
+    "success-title": "Success",
+    "success-message": "Your email has been verified successfully!",
+    "error-title": "Error",
+    "error-no-token": "No token provided.",
+    "error-verification-failed": "Error verifying email.",
+    "redirect-message": "You will be redirected in a few seconds..."
   },
   "caseStudies": {
     "title": "Inspiring success stories",
