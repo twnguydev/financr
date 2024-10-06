@@ -68,63 +68,65 @@ const SubscriptionsPage: React.FC = () => {
   ];
 
   return (
-    <div className="container mx-auto my-20 px-3 md:px-0">
-      <h1 className="text-5xl font-bold mb-8">{t('title')}</h1>
-      <p className="font-mono text-xl text-gray-600 mb-12">
-        {t('description')}
-      </p>
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="py-12 sm:py-16 lg:py-20">
+        <h1 className="text-5xl font-bold mb-8">{t('title')}</h1>
+        <p className="font-mono text-xl text-gray-600 mb-12">
+          {t('description')}
+        </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-        {subscriptionPlans.map((plan) => (
-          <SubscriptionCard key={plan.name} plan={plan} />
-        ))}
-      </div>
-
-      <section className="bg-white rounded-lg shadow-lg p-8 mb-16">
-        <h2 className="text-3xl font-bold mb-6">{t('why_choose_us.title')}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <FeatureCard
-            icon={<Zap className="w-12 h-12 text-yellow-500" />}
-            title={t('why_choose_us.features.analytics.title')}
-            description={t('why_choose_us.features.analytics.description')}
-          />
-          <FeatureCard
-            icon={<Shield className="w-12 h-12 text-green-500" />}
-            title={t('why_choose_us.features.security.title')}
-            description={t('why_choose_us.features.security.description')}
-          />
-          <FeatureCard
-            icon={<BarChart className="w-12 h-12 text-blue-500" />}
-            title={t('why_choose_us.features.predictions.title')}
-            description={t('why_choose_us.features.predictions.description')}
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {subscriptionPlans.map((plan) => (
+            <SubscriptionCard key={plan.name} plan={plan} />
+          ))}
         </div>
-      </section>
 
-      <section className="text-center mb-16">
-        <h2 className="text-3xl font-bold mb-4">{t('not_sure_yet.title')}</h2>
-        <p className="font-mono text-xl text-gray-600 mb-8">
-          {t('not_sure_yet.description')}
-        </p>
-        <Link
-          href="/use-cases"
-          className="inline-flex items-center text-lg font-semibold text-blue-600 hover:text-blue-800"
-        >
-          {t('not_sure_yet.cta')} <ArrowRight className="ml-2" />
-        </Link>
-      </section>
+        <section className="bg-white rounded-lg shadow-lg p-8 mb-16">
+          <h2 className="text-3xl font-bold mb-6">{t('why_choose_us.title')}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <FeatureCard
+              icon={<Zap className="w-12 h-12 text-yellow-500" />}
+              title={t('why_choose_us.features.analytics.title')}
+              description={t('why_choose_us.features.analytics.description')}
+            />
+            <FeatureCard
+              icon={<Shield className="w-12 h-12 text-green-500" />}
+              title={t('why_choose_us.features.security.title')}
+              description={t('why_choose_us.features.security.description')}
+            />
+            <FeatureCard
+              icon={<BarChart className="w-12 h-12 text-blue-500" />}
+              title={t('why_choose_us.features.predictions.title')}
+              description={t('why_choose_us.features.predictions.description')}
+            />
+          </div>
+        </section>
 
-      <section className="bg-black text-white rounded-lg p-8 text-center">
-        <h2 className="text-3xl font-bold mb-4">{t('cta.title')}</h2>
-        <p className="font-mono text-xl mb-8">
-          {t('cta.description')}
-        </p>
-        <Link
-          href="/auth/signup"
-          className="bg-white text-black font-bold px-8 py-3 rounded-full hover:bg-gray-200 transition duration-300"
-        >
-          {t('cta.cta')}
-        </Link>
+        <section className="text-center mb-16">
+          <h2 className="text-3xl font-bold mb-4">{t('not_sure_yet.title')}</h2>
+          <p className="font-mono text-xl text-gray-600 mb-8">
+            {t('not_sure_yet.description')}
+          </p>
+          <Link
+            href="/use-cases"
+            className="inline-flex items-center text-lg font-semibold text-blue-600 hover:text-blue-800"
+          >
+            {t('not_sure_yet.cta')} <ArrowRight className="ml-2" />
+          </Link>
+        </section>
+
+        <section className="bg-black text-white rounded-lg p-8 text-center">
+          <h2 className="text-3xl font-bold mb-4">{t('cta.title')}</h2>
+          <p className="font-mono text-xl mb-8">
+            {t('cta.description')}
+          </p>
+          <Link
+            href="/auth/signup"
+            className="bg-white text-black font-bold px-8 py-3 rounded-full hover:bg-gray-200 transition duration-300"
+          >
+            {t('cta.cta')}
+          </Link>
+        </section>
       </section>
     </div>
   );

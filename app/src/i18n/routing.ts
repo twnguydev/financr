@@ -19,7 +19,7 @@ export const routing = defineRouting({
       fr: '/auth/connexion'
     },
 
-    '/auth/register': {
+    '/auth/signup': {
       en: '/auth/register',
       fr: '/auth/inscription'
     },

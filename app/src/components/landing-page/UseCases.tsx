@@ -16,43 +16,45 @@ export default function UseCases(): JSX.Element {
   const t = useTranslations('caseStudies');
 
   return (
-    <div className="container mx-auto my-20 px-3 md:px-0">
-      <h1 className="text-5xl font-bold mb-8">{t('title')}</h1>
-      <p className="font-mono text-xl text-gray-600 mb-12">
-        {t('description')}
-      </p>
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="py-12 sm:py-16 lg:py-20">
+        <h1 className="text-5xl font-bold mb-8">{t('title')}</h1>
+        <p className="font-mono text-xl text-gray-600 mb-12">
+          {t('description')}
+        </p>
 
-      <div className="space-y-16">
-        <CaseStudy
-          title={t('studies.hedgeFund.title')}
-          description={t('studies.hedgeFund.description')}
-          challenge={t('studies.hedgeFund.challenge')}
-          solution={t.raw('studies.hedgeFund.solution')}
-          results={t.raw('studies.hedgeFund.results')}
-          impact={t('studies.hedgeFund.impact')}
-          icon={<ShieldCheck size={48} />}
-        />
+        <div className="space-y-16">
+          <CaseStudy
+            title={t('studies.hedgeFund.title')}
+            description={t('studies.hedgeFund.description')}
+            challenge={t('studies.hedgeFund.challenge')}
+            solution={t.raw('studies.hedgeFund.solution')}
+            results={t.raw('studies.hedgeFund.results')}
+            impact={t('studies.hedgeFund.impact')}
+            icon={<ShieldCheck size={48} />}
+          />
 
-        <CaseStudy
-          title={t('studies.retailInvestor.title')}
-          description={t('studies.retailInvestor.description')}
-          challenge={t('studies.retailInvestor.challenge')}
-          solution={t.raw('studies.retailInvestor.solution')}
-          results={t.raw('studies.retailInvestor.results')}
-          impact={t('studies.retailInvestor.impact')}
-          icon={<TrendingUp size={48} />}
-        />
+          <CaseStudy
+            title={t('studies.retailInvestor.title')}
+            description={t('studies.retailInvestor.description')}
+            challenge={t('studies.retailInvestor.challenge')}
+            solution={t.raw('studies.retailInvestor.solution')}
+            results={t.raw('studies.retailInvestor.results')}
+            impact={t('studies.retailInvestor.impact')}
+            icon={<TrendingUp size={48} />}
+          />
 
-        <CaseStudy
-          title={t('studies.pensionFund.title')}
-          description={t('studies.pensionFund.description')}
-          challenge={t('studies.pensionFund.challenge')}
-          solution={t.raw('studies.pensionFund.solution')}
-          results={t.raw('studies.pensionFund.results')}
-          impact={t('studies.pensionFund.impact')}
-          icon={<PieChart size={48} />}
-        />
-      </div>
+          <CaseStudy
+            title={t('studies.pensionFund.title')}
+            description={t('studies.pensionFund.description')}
+            challenge={t('studies.pensionFund.challenge')}
+            solution={t.raw('studies.pensionFund.solution')}
+            results={t.raw('studies.pensionFund.results')}
+            impact={t('studies.pensionFund.impact')}
+            icon={<PieChart size={48} />}
+          />
+        </div>
+      </section>
     </div>
   );
 }
