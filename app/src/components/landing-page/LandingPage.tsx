@@ -165,7 +165,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, isD
     <div className={`p-6 rounded-lg flex flex-col h-full ${isDark ? 'bg-black text-white' : 'bg-gray-200 text-black'}`}>
       <div className="mb-4">{icon}</div>
       <h3 className="text-xl font-bold mb-2 h-14 flex items-center">{title}</h3>
-      <p className={`font-mono ${isDark ? 'text-gray-300' : 'text-gray-600'} flex-grow mb-4 h-24 overflow-y-auto`}>
+      <p className={`font-mono ${isDark ? 'text-gray-300' : 'text-gray-600'} flex-grow mb-4 h-36 overflow-y-auto`}>
         {description}
       </p>
       <Link href="/services" className="inline-flex items-center mt-auto font-bold">
