@@ -10,7 +10,7 @@
     "home": "Financr",
     "toggleMenu": "Toggle menu",
     "requestQuote": "Start now",
-    "aboutUs": "About us",
+    "aboutUs": "Who's Financr",
     "services": "Services",
     "useCases": "Use Cases",
     "pricing": "Pricing",
@@ -126,6 +126,46 @@
     "callToActionTitle": "Let's make things happen",
     "callToActionDescription": "Contact us today to learn more about how our investment management services can help your business grow and succeed financially.",
     "callToActionButton": "Get your free proposal"
+  },
+  "aboutUs": {
+    "heroTitle": "We are pioneering financial innovation",
+    "heroDescription": "As a newly launched startup, we're a team of passionate individuals dedicated to revolutionizing the world of finance through cutting-edge technology and data-driven insights.",
+    "contactUs": "Contact us",
+    "ourValuesTitle": "Our core values",
+    "ourValuesDescription": "At the heart of our startup are the principles that guide every decision we make and every action we take.",
+    "valueCustomerFirst": {
+      "title": "Customer First",
+      "description": "We prioritize our clients' needs and success above all else."
+    },
+    "valueExcellence": {
+      "title": "Excellence",
+      "description": "We strive for the highest standards in everything we do."
+    },
+    "valueIntegrity": {
+      "title": "Integrity",
+      "description": "We operate with honesty, transparency, and ethical behavior."
+    },
+    "valueInnovation": {
+      "title": "Innovation",
+      "description": "We continuously seek new and better ways to serve our clients."
+    },
+    "ourStoryTitle": "Where we come from",
+    "ourStoryParagraph1": "Founded in 2024, our startup emerged from a simple yet powerful idea: to make advanced financial analysis accessible to everyone.",
+    "ourStoryParagraph2": "As a young company, we're working tirelessly to build innovative solutions and establish ourselves in the fintech industry. Our journey is just beginning, but it's already marked by a relentless focus on innovation and our clients' success.",
+    "ourStoryParagraph3": "Today, we're excited to be at the cutting edge of financial technology, aiming to help individuals and institutions make smarter, data-driven financial decisions.",
+    "ourTeamTitle": "Discover who we are",
+    "ourTeamDescription": "Our startup is driven by talented individuals who bring their passion and expertise to work every day.",
+    "teamMember1": {
+      "name": "Tanguy Gibrat",
+      "role": "CEO & Co-founder"
+    },
+    "teamMember2": {
+      "name": "Romain Farinacci",
+      "role": "CTO & Co-founder"
+    },
+    "joinOurTeamTitle": "Join Financr to drive financial innovation",
+    "joinOurTeamDescription": "As a growing startup, we're always looking for talented individuals who share our passion for innovation and excellence in finance.",
+    "viewOpenings": "Contact us"
   },
   "services": {
     "title": "Tailored investment solutions",

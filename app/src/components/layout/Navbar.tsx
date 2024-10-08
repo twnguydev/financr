@@ -15,7 +15,7 @@ const Navbar = () => {
   const cleanedPathname = pathname.substring(currentLang.length + 1) || '/';
 
   const navLinks = [
-    { href: '#', label: t('aboutUs') },
+    { href: '/about-us', label: t('aboutUs') },
     { href: '/services', label: t('services') },
     { href: '/use-cases', label: t('useCases') },
     { href: '/plans', label: t('pricing') },
@@ -36,7 +36,7 @@ const Navbar = () => {
           {t('home')}
         </Link>
 
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
           {navLinks.map((link) => (
             <Link
               key={link.href}

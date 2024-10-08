@@ -162,12 +162,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, isD
   const t = useTranslations('landingPage');
 
   return (
-    <div className={`p-6 rounded-lg flex flex-col h-full ${isDark ? 'bg-black text-white' : 'bg-gray-200 text-black'}`}>
-      <div className="mb-4">{icon}</div>
-      <h3 className="text-xl font-bold mb-2 h-14 flex items-center">{title}</h3>
-      <p className={`font-mono ${isDark ? 'text-gray-300' : 'text-gray-600'} flex-grow mb-4 h-36 overflow-y-auto`}>
-        {description}
-      </p>
+    <div className={`p-6 rounded-lg flex flex-col justify-between h-full ${isDark ? 'bg-black text-white' : 'bg-gray-200 text-black'}`}>
+      <div className="flex-grow">
+        <div className="mb-4">{icon}</div>
+        <h3 className="text-xl font-bold mb-2 flex items-center">{title}</h3>
+        <p className={`font-mono ${isDark ? 'text-gray-300' : 'text-gray-600'} mb-4`}>
+          {description}
+        </p>
+      </div>
       <Link href="/services" className="inline-flex items-center mt-auto font-bold">
         {t('learnMore')}
         <ArrowRight className="ml-2" size={16} />
@@ -180,9 +182,11 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ title, description }): JS
   const t = useTranslations('landingPage');
 
   return (
-    <div>
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="font-mono text-gray-300 mb-4">{description}</p>
+    <div className="flex flex-col justify-between">
+      <div className="flex-grow">
+        <h3 className="text-xl font-bold mb-2">{title}</h3>
+        <p className="font-mono text-gray-300 mb-4">{description}</p>
+      </div>
       <Link href="/use-cases" className="inline-flex items-center font-bold text-white">
         {t('learnMore')}
         <ArrowRight className="ml-2" size={16} />

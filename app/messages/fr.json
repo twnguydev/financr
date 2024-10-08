@@ -125,8 +125,48 @@
       "description": "Nos aperçus du marché et notre suivi des performances ont conduit à un portefeuille plus diversifié, avec une croissance stable de 8 % d'une année sur l'autre."
     },
     "callToActionTitle": "Faisons bouger les choses",
-    "callToActionDescription": "Contactez-nous dès aujourd'hui pour en savoir plus sur la manière dont nos services de gestion des investissements peuvent aider votre entreprise à croître et réussir financièrement.",
+    "callToActionDescription": "Contactez-nous dès aujourd'hui pour en savoir plus sur la manière dont nos services de gestion des investissements peuvent aider vos finances personnelles ou votre entreprise à croître et réussir financièrement.",
     "callToActionButton": "Obtenez votre proposition gratuite"
+  },
+  "aboutUs": {
+    "heroTitle": "Les pionniers de l'innovation financière",
+    "heroDescription": "En tant que startup nouvellement lancée, nous sommes une équipe de passionnés dédiés à révolutionner le monde de la finance grâce à une technologie de pointe et des insights basés sur les données.",
+    "contactUs": "Contactez-nous",
+    "ourValuesTitle": "Nos valeurs fondamentales",
+    "ourValuesDescription": "Au cœur de notre startup se trouvent les principes qui guident chaque décision que nous prenons et chaque action que nous menons.",
+    "valueCustomerFirst": {
+      "title": "Priorité Client",
+      "description": "Nous priorisons les besoins et le succès de nos clients avant tout."
+    },
+    "valueExcellence": {
+      "title": "Excellence",
+      "description": "Nous visons les plus hauts standards dans tout ce que nous faisons."
+    },
+    "valueIntegrity": {
+      "title": "Intégrité",
+      "description": "Nous opérons avec honnêteté, transparence et comportement éthique."
+    },
+    "valueInnovation": {
+      "title": "Innovation",
+      "description": "Nous recherchons continuellement de nouvelles et meilleures façons de servir nos clients."
+    },
+    "ourStoryTitle": "Notre histoire",
+    "ourStoryParagraph1": "Fondée en 2024, notre startup est née d'une idée simple mais puissante : rendre l'analyse financière avancée accessible à tous.",
+    "ourStoryParagraph2": "En tant que jeune entreprise, nous travaillons sans relâche pour développer des solutions innovantes et nous établir dans l'industrie fintech. Notre parcours ne fait que commencer, mais il est déjà marqué par une concentration inébranlable sur l'innovation et le succès de nos clients.",
+    "ourStoryParagraph3": "Aujourd'hui, nous sommes enthousiastes d'être à la pointe de la technologie financière, visant à aider aussi bien les particuliers que les institutions à prendre des décisions financières plus intelligentes, basées sur les données.",
+    "ourTeamTitle": "Rencontrez les visages derrière Financr",
+    "ourTeamDescription": "Notre startup est portée par des individus talentueux qui apportent leur passion et leur expertise au travail chaque jour.",
+    "teamMember1": {
+      "name": "Tanguy Gibrat",
+      "role": "PDG & Co-fondateur"
+    },
+    "teamMember2": {
+      "name": "Romain Farinacci",
+      "role": "Directeur Technique & Co-fondateur"
+    },
+    "joinOurTeamTitle": "Rejoignez Financr pour conduire l'innovation financière",
+    "joinOurTeamDescription": "En tant que startup en croissance, nous sommes toujours à la recherche d'individus talentueux qui partagent notre passion pour l'innovation et l'excellence en finance.",
+    "viewOpenings": "Contactez-nous"
   },
   "services": {
     "title": "Solutions d'investissement sur mesure",

@@ -4,6 +4,7 @@ import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram, Phone, Mail } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { Link as I18nLink } from '@i18n/routing';
 
 export default function Footer(): JSX.Element {
   const t = useTranslations('footer');
@@ -74,8 +75,8 @@ export default function Footer(): JSX.Element {
           <div>
             <h3 className="text-xl font-semibold text-white mb-4">{t('languagesTitle')}</h3>
             <ul className="space-y-2">
-              <li><Link href="/" locale="en" className="hover:text-white">{t('languages.en')}</Link></li>
-              <li><Link href="/" locale="fr" className="hover:text-white">{t('languages.fr')}</Link></li>
+              <li><I18nLink href="/" locale="en" className="hover:text-white">{t('languages.en')}</I18nLink></li>
+              <li><I18nLink href="/" locale="fr" className="hover:text-white">{t('languages.fr')}</I18nLink></li>
               {/* Ajoutez d'autres langues ici si nécessaire */}
             </ul>
           </div>
