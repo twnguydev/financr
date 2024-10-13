@@ -50,9 +50,7 @@ export default async function RootLayout({
       <body className="min-h-screen antialiased font-sans">
         <AuthProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <Navbar />
             {children}
-            <Footer />
           </NextIntlClientProvider>
         </AuthProvider>
       </body>
