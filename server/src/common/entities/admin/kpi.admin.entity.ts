@@ -15,13 +15,13 @@ export class KPIAdmin {
   @Column('text')
   description_en: string;
 
-  @Column('float')
+  @Column('float', { default: 0 })
   value: number;
 
-  @Column('float')
+  @Column('float', { default: 0 })
   trend: number;
 
-  @Column('float')
+  @Column('float', { default: 0 })
   limit: number;
 
   @Column()

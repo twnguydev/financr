@@ -2,17 +2,17 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useApi } from '@hooks/api';
 import { useRouter } from 'next/navigation';
 import { Link } from '@i18n/routing';
 import { useAuth } from '@providers/auth';
 import { ArrowRight, Mail, Lock, LoaderCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+const apiUrl: string | undefined = process.env.NEXT_PUBLIC_FINANCR_API_URL;
+
 export default function LoginPage(): JSX.Element {
   const t = useTranslations('login');
   const { login } = useAuth();
-  const { api } = useApi();
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,9 +27,7 @@ export default function LoginPage(): JSX.Element {
 
     try {
       setLoading(true);
-      const response = await api.post('/auth/login', { email, password });
-      console.log('Réponse de connexion:', response);
-
+      const response = await axios.post(`${apiUrl}/auth/login`, { email, password });
       if (response.status === 201) {
         setSuccess(t('messages.success'));
         await login(response.data.user, response.data.access_token);

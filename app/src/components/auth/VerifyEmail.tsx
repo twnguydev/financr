@@ -1,17 +1,18 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
 import { LoaderCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { useApi } from '@hooks/api';
 import { usePathname } from 'next/navigation';
 import Toast, { ToastMessage } from '@components/layout/Toast';
+
+const apiUrl: string | undefined = process.env.NEXT_PUBLIC_FINANCR_API_URL;
 
 export default function VerifyEmailPage(): JSX.Element {
   const [showToast, setShowToast] = useState(false);
   const requestSentRef = useRef(false);
-  const { api } = useApi();
   const pathname: string = usePathname();
   const lang: string = pathname.split('/')[1];
   const router = useRouter();
@@ -49,7 +50,7 @@ export default function VerifyEmailPage(): JSX.Element {
       }
 
       try {
-        const response = await api.get(`/auth/verify-email?token=${token}`);
+        const response = await axios.get(`${apiUrl}/auth/verify-email?token=${token}`);
 
         if (response.status === 200) {
           setMessage(t('setting-up'));
@@ -82,7 +83,7 @@ export default function VerifyEmailPage(): JSX.Element {
     };
 
     verifyEmail();
-  }, [router, t, api]);
+  }, [router, t, lang]);
 
   return (
     <div className="container flex items-center justify-center mx-auto h-screen px-3 md:px-0">

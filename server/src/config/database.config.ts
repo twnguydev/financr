@@ -9,4 +9,5 @@ export const getDatabaseConfig = (configService: ConfigService): DataSourceOptio
   entities: [__dirname + '/../**/*.entity.{ts,js}'],
   migrations: [__dirname + '/../migrations/*{.ts,.js}'],
   ssl: configService.get('FINANCR_ENV') === 'production' ? { rejectUnauthorized: false } : false,
+  logging: true
 });

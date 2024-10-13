@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from 'react';
+import axios from 'axios';
+import { useAuth } from '@providers/auth';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
-import { Bell, ArrowRight, TrendingUp, TrendingDown } from 'lucide-react';
+import { Bell, ArrowRight, TrendingUp, TrendingDown, CalendarIcon } from 'lucide-react';
 import Sidebar from '@components/admin/Sidebar';
-import { useApi } from '@hooks/api';
 
 interface KPIData {
   id: string;
@@ -16,49 +17,68 @@ interface KPIData {
   color: string;
 }
 
+const apiUrl: string | undefined = process.env.NEXT_PUBLIC_FINANCR_API_URL;
+
 const DashboardKPI: React.FC = () => {
+  const { token } = useAuth();
   const [activeTab, setActiveTab] = useState<string>('kpi');
-  const { api } = useApi();
   const [kpiData, setKpiData] = useState<KPIData[]>([]);
   const [trendData, setTrendData] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [startDate, setStartDate] = useState<string>('2024-08-01');
+  const [endDate, setEndDate] = useState<string>('2024-10-01');
   const [error, setError] = useState<string | null>(null);
 
-  const fetchKPIData = useCallback(async (): Promise<void> => {
+  const fetchKPIData = async (): Promise<void> => {
     try {
-      const response = await api.get('/admin/kpi');
+      const response = await axios.get(`${apiUrl}/admin/kpi`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      console.log(response);
       setKpiData(response.data);
     } catch (err) {
       setError('Erreur lors du chargement des KPI');
     }
-  }, [api]);
+  };
 
-  const fetchTrendData = useCallback(async (): Promise<void> => {
+  const fetchTrendData = async (): Promise<void> => {
     try {
-      const response = await api.get('/admin/kpi/trends');
+      const response = await axios.get(`${apiUrl}/admin/kpi/trends`, {
+        headers: { Authorization: `Bearer ${token}` },
+        params: { startDate, endDate }
+      });
+      console.log(response);
       setTrendData(response.data);
     } catch (err) {
       setError('Erreur lors du chargement des tendances');
     }
-  }, [api]);
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      await Promise.all([fetchKPIData(), fetchTrendData()]);
-      setLoading(false);
-    };
+    if (token) {
+      fetchData();
+    }
+  }, [token, startDate, endDate]);
 
-    fetchData();
-  }, [fetchKPIData, fetchTrendData]);
+  const fetchData = async () => {
+    setLoading(true);
+    await Promise.all([fetchKPIData(), fetchTrendData()]);
+    setLoading(false);
+  };
 
   const handleAlertChange = async (id: string, limit: string) => {
     try {
-      await api.put(`/admin/kpi/${id}/limit`, { limit });
+      await axios.put(`${apiUrl}/admin/kpi/${id}/limit`, { limit }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       await fetchKPIData();
     } catch (err) {
       setError('Erreur lors de la mise à jour de la limite');
     }
+  };
+
+  const handleDateChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    setter(e.target.value);
   };
 
   const TrendIndicator: React.FC<{ value: number }> = ({ value }) => (
@@ -165,7 +185,41 @@ const DashboardKPI: React.FC = () => {
       <Sidebar tab={activeTab} setTab={setActiveTab} />
 
       <div className="flex-1 p-8 overflow-y-auto">
-        <h1 className="text-4xl font-bold mb-8">Tableau de bord KPI</h1>
+      <h1 className="text-4xl font-bold mb-8">Tableau de bord KPI</h1>
+        <div className="mb-6 flex flex-wrap items-end space-x-4">
+          <div className="flex-grow min-w-[200px] mb-4 sm:mb-0">
+            <label htmlFor="startDate" className="block text-sm font-medium text-gray-700 mb-1">Date de début</label>
+            <div className="relative">
+              <input
+                type="date"
+                id="startDate"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+              <CalendarIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+            </div>
+          </div>
+          <div className="flex-grow min-w-[200px] mb-4 sm:mb-0">
+            <label htmlFor="endDate" className="block text-sm font-medium text-gray-700 mb-1">Date de fin</label>
+            <div className="relative">
+              <input
+                type="date"
+                id="endDate"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+              <CalendarIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+            </div>
+          </div>
+          <button
+            onClick={fetchData}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150 ease-in-out"
+          >
+            Actualiser
+          </button>
+        </div>
         {renderContent()}
       </div>
     </div>

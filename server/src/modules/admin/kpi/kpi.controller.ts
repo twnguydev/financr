@@ -14,14 +14,19 @@ export class KPIController {
     return this.kpiService.findAll();
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string): Promise<KPIAdmin> {
-    return this.kpiService.findOne(id);
-  }
-
   @Post()
   async create(@Body() kpiData: Partial<KPIAdmin>): Promise<KPIAdmin> {
     return this.kpiService.create(kpiData);
+  }
+
+  @Get('trends')
+  async getTrends(@Query('startDate') startDate: string, @Query('endDate') endDate: string) {
+    return this.kpiService.getTrends(startDate, endDate);
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string): Promise<KPIAdmin> {
+    return this.kpiService.findOne(id);
   }
 
   @Put(':id')
@@ -37,11 +42,6 @@ export class KPIController {
   @Put(':id/limit')
   async updateLimit(@Param('id') id: string, @Body('limit') limit: number): Promise<KPIAdmin> {
     return this.kpiService.updateLimit(id, limit);
-  }
-
-  @Get('trends')
-  async getTrends(@Query('startDate') startDate: string, @Query('endDate') endDate: string) {
-    return this.kpiService.getTrends(new Date(startDate), new Date(endDate));
   }
 
   @Post(':id/history')

@@ -32,11 +32,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const login = async (userData: any, accessToken: string): Promise<void> => {
+    console.log('userData:', userData);
     if (userData && userData.id && userData.email) {
       const newUser: User = {
         id: userData.id,
         email: userData.email,
-        platformRole: userData.PlatformRoleEnum || PlatformRoleEnum.USER,
+        platformRole: userData.platformRole || PlatformRoleEnum.USER,
         tenantRoles: userData.tenantRoles,
         firstname: userData.firstname,
         lastname: userData.lastname,

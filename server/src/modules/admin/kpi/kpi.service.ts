@@ -49,21 +49,28 @@ export class KPIService {
     return this.kpiRepository.save(kpi);
   }
 
-  async getTrends(startDate: Date, endDate: Date) {
-    const kpis: KPIAdmin[] = await this.kpiRepository.find({ relations: ['history'] });
+  async getTrends(startDate: string, endDate: string) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+      throw new Error('Invalid date format');
+    }
+
+    const kpis: KPIAdmin[] = await this.kpiRepository.find();
     const trends = {};
 
     for (const kpi of kpis) {
       const history: KPIHistoryAdmin[] = await this.kpiHistoryRepository.find({
         where: {
           kpi: { id: kpi.id },
-          date: Between(startDate, endDate)
+          date: Between(start, end)
         },
         order: { date: 'ASC' }
       });
 
       trends[kpi.name] = history.map(entry => ({
-        date: entry.date,
+        date: entry.date.toISOString().split('T')[0], // Format as YYYY-MM-DD
         value: entry.value
       }));
     }
